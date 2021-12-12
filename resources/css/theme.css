@@ -1,0 +1,122 @@
+:after,
+:before{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+#app, html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: Montserrat;
+    color: #fff;
+    background-color: #000;
+}
+a{
+    color: #000 !important;
+    font-weight: 500 !important;
+    font-size: 24px;
+}
+@media (min-width: 1400px) {
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1630px !important;
+    }
+}
+/***************SECTION HEADER***************/
+.header-links{
+    padding-top: 130px;
+}
+.header-links .col a{
+    margin-left: 18px;
+    margin-right: 18px;
+}
+.header-section{
+    background: url('/images/headSectionBg.jpg') no-repeat center;
+    background-size: cover;
+    min-height: 1791px;
+}
+.svglink > path{
+    color: white;
+    width: 50px !important;
+    height: 50px !important;
+}
+.logo{
+    padding-top: 240px;
+}
+.header-section .col .cataloglink{
+    font-weight: 300;
+    width: 440px;
+    text-decoration: none;
+    margin-top: 40px;
+    padding: 20px;
+    border: 2px solid white;
+}
+/***************SECTION ABOUT***************/
+.about-section{
+    background: url('/images/__template-bg.png') no-repeat center #3F3F3F;
+    min-height: 950px;
+    padding: 80px;
+}
+.about-section h1{
+    margin-bottom: 55px;
+}
+.about-section .aboutus-text{
+    font-size: 24px;
+    text-align: justify;
+}
+.about-section .aboutus-text span{
+    font-weight: 700;
+    font-size: 28px;
+    color: greenyellow;
+}
+.about-section .aboutus-img > img{
+    width: 600px;
+    height: 600px;
+}
+/***************SECTION ADDRESS***************/
+.address-section{
+    background-color: #6B6B6B;
+    min-height: 950px;
+    padding: 80px;
+}
+.address-section h1{
+    margin-bottom: 55px;
+}
+.address-section .map{
+    position: relative;
+}
+.address-section .map .card{
+    position: absolute;
+    top: 110px;
+    left: 130px;
+    color: #000;
+}
+.address-section .card-body{
+    width: 440px;
+    height: 460px;
+}
+.address-section .card-title{
+    font-weight: 700;
+    font-size: 36px;
+    margin-top: 20px;
+}
+.address-section .card-text{
+    font-size: 24px;
+    margin: -3px 0;
+}
+/***************SECTION FOOTER***************/
+.footer{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #fff;
+}
+.footer .text-muted{
+    margin-top: -30px;
+    margin-left: 2px;
+    font-size: 17px;
+}
+.footer a{
+    margin-left: 18px;
+    margin-right: 18px;
+}
