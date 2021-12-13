@@ -20,6 +20,9 @@ class CreateCategoriesTable extends Migration
 
         DB::table('categories')->insert([
             [
+                'name' => 'Все',
+            ],
+            [
                 'name' => 'Кальяны',
             ],
             [

@@ -8,7 +8,7 @@
                         <img src="/images/logo.svg" alt="">
                     </div>
                     <div class="row justify-content-center">
-                        <a class="cataloglink text-center text-white" href="/product">
+                        <a class="cataloglink text-center text-white" href="/products">
                             Перейти в каталог
                             <fa class="align-middle" :icon="['fas', 'long-arrow-alt-right']" size="md"/>
                         </a>

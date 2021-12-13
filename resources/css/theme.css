@@ -11,12 +11,15 @@
     height: 100%;
     font-family: Montserrat;
     color: #fff;
-    background-color: #000;
+    background: url('/images/__template_product-bg.png') repeat-y center #000;
 }
 a{
     color: #000 !important;
     font-weight: 500 !important;
     font-size: 24px;
+}
+h1.text-center{
+    font-weight: 700;
 }
 @media (min-width: 1400px) {
     .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
@@ -26,6 +29,7 @@ a{
 /***************SECTION HEADER***************/
 .header-links{
     padding-top: 130px;
+    margin-bottom: 60px;
 }
 .header-links .col a{
     margin-left: 18px;
@@ -119,4 +123,40 @@ a{
 .footer a{
     margin-left: 18px;
     margin-right: 18px;
+}
+/***************CATEGORIES***************/
+#categories{
+    margin-bottom: 20px;
+}
+#categories .nav{
+    padding: 20px;
+}
+#categories h1{
+    margin-bottom: 40px;
+}
+#categories li{
+    margin: 15px auto;
+}
+#categories a{
+    font-size: 34px;
+}
+#categories .categorylink{
+    color: #fff !important;
+    padding: 10px 37px;
+    font-weight: 300;
+    text-decoration: none;
+    border: 2px solid white;
+}
+#categories .categorylink:active{
+    color: #000 !important;
+    background-color: #fff;
+}
+/***************PRODUCT CONTENT***************/
+#products{
+    color: #000;
+}
+#products .card{
+    margin: 0 20px;
+    width: 350px;
+    height: 480px;
 }

@@ -14,6 +14,7 @@ library.add( fas, fab )
 Vue.component('fa', FontAwesomeIcon)
 
 Vue.use(VueRouter)
+window.axios = require('axios');
 
 new Vue({
     el: '#app',

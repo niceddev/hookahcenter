@@ -1,4 +1,53 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap);
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 100px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    -webkit-animation-delay: -0.45s;
+            animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    -webkit-animation-delay: -0.3s;
+            animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    -webkit-animation-delay: -0.15s;
+            animation-delay: -0.15s;
+}
+@-webkit-keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @charset "UTF-8";
 :after,
 :before {
@@ -14,13 +63,17 @@
   height: 100%;
   font-family: Montserrat;
   color: #fff;
-  background-color: #000;
+  background: url("/images/__template_product-bg.png") repeat-y center #000;
 }
 
 a {
   color: #000 !important;
   font-weight: 500 !important;
   font-size: 24px;
+}
+
+h1.text-center, .text-center.h1 {
+  font-weight: 700;
 }
 
 @media (min-width: 1400px) {
@@ -31,6 +84,7 @@ a {
 /***************SECTION HEADER***************/
 .header-links {
   padding-top: 130px;
+  margin-bottom: 60px;
 }
 
 .header-links .col a {
@@ -144,6 +198,51 @@ a {
 .footer a {
   margin-left: 18px;
   margin-right: 18px;
+}
+
+/***************CATEGORIES***************/
+#categories {
+  margin-bottom: 20px;
+}
+
+#categories .nav {
+  padding: 20px;
+}
+
+#categories h1, #categories .h1 {
+  margin-bottom: 40px;
+}
+
+#categories li {
+  margin: 15px auto;
+}
+
+#categories a {
+  font-size: 34px;
+}
+
+#categories .categorylink {
+  color: #fff !important;
+  padding: 10px 37px;
+  font-weight: 300;
+  text-decoration: none;
+  border: 2px solid white;
+}
+
+#categories .categorylink:active {
+  color: #000 !important;
+  background-color: #fff;
+}
+
+/***************PRODUCT CONTENT***************/
+#products {
+  color: #000;
+}
+
+#products .card {
+  margin: 0 20px;
+  width: 350px;
+  height: 480px;
 }
 
 /*!
