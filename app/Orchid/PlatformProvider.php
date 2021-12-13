@@ -8,7 +8,6 @@ use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
-use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
@@ -28,14 +27,16 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
-            Menu::make('Example screen')
-                ->icon('monitor')
-                ->route('platform.example')
-                ->title('Navigation')
-                ->badge(function () {
-                    return 6;
-                })
-            ];
+            Menu::make('Добавить продукт')
+                ->route('platform.products')
+                ->icon('database')
+                ->title('Панель управления'),
+
+            Menu::make('Добавить категорию')
+                ->route('platform.categories')
+                ->icon('filter')
+
+        ];
     }
 
     /**
@@ -44,7 +45,7 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerProfileMenu(): array
     {
         return [
-            Menu::make('Profile')
+            Menu::make('Профиль')
                 ->route('platform.profile')
                 ->icon('user'),
         ];
