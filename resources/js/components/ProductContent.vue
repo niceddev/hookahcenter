@@ -1,10 +1,10 @@
 <template :class="{ loaded: true }">
     <div id="products" class="products container-fluid">
-        <div class="container d-flex flex-wrap justify-content-center">
+        <div class="container d-flex flex-wrap">
             <div v-if="!loaded" class="lds-ring"><div></div><div></div><div></div><div></div></div>
             <div class="card shadow p-3 mb-5 bg-body rounded" v-for="product in products" :key="product.id">
                 <div class="card-body">
-                    <img src="" alt="productimage">
+                    <img class="img-thumbnail" :src="product.image_path" alt="productimage">
                     <h5 class="card-title">{{product.name}}</h5>
                     <p class="card-text">{{product.description}}</p>
                     <p class="card-text">{{product.price}}</p>

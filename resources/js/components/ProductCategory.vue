@@ -3,6 +3,9 @@
         <div class="container">
             <h1 class="text-center">КАТАЛОГ</h1>
             <ul class="nav nav-pills d-flex flex-wrap justify-content-between">
+                <li class="nav-item">
+                    <a class="categorylink" href="#">Все</a>
+                </li>
                 <li class="nav-item" v-for="category in categories" :key="category.id">
                     <a class="categorylink" href="#">{{ category.name }}</a>
                 </li>

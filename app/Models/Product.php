@@ -13,7 +13,7 @@ class Product extends Model
     use AsSource;
     use Filterable;
 
-    protected $fillable = ['name', 'description', 'category_id', 'price'];
+    protected $fillable = ['name', 'description', 'category_id', 'price', 'image_path'];
 
     protected $allowedSorts = [
         'price',
@@ -24,7 +24,7 @@ class Product extends Model
         'name'
     ];
 
-    public function categories(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 }

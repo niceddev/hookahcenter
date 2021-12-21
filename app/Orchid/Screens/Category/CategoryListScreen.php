@@ -2,10 +2,15 @@
 
 namespace App\Orchid\Screens\Category;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Orchid\Layouts\Category\CategoryListTable;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Fields\Input;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Screen;
-use Orchid\Screen\TD;
+use Orchid\Support\Facades\Toast;
 
 class CategoryListScreen extends Screen
 {
@@ -23,7 +28,9 @@ class CategoryListScreen extends Screen
      */
     public function query(): array
     {
-        return [ 'category' => Category::all() ];
+        return [
+            'categories' => Category::all()
+        ];
     }
 
     /**
@@ -33,7 +40,9 @@ class CategoryListScreen extends Screen
      */
     public function commandBar(): array
     {
-        return [];
+        return [
+            ModalToggle::make('Создать категорию')->modal('createCategoryModal')->method('save')
+        ];
     }
 
     /**
@@ -44,9 +53,43 @@ class CategoryListScreen extends Screen
     public function layout(): array
     {
         return [
-            Layout::table('category',[
-                TD::make('')
-            ])
+            CategoryListTable::class,
+
+            Layout::modal('createCategoryModal', Layout::rows([
+                Input::make('name')->required()
+            ]))
+                ->title('Создание категории')
+                ->applyButton('Создать категорию'),
+
+            Layout::modal('asyncEditCategoryModal', Layout::rows([
+                Input::make('category.name')->required()
+            ]))
+                ->applyButton('Редактировать')
+                ->async('asyncUpdateCategory'),
         ];
     }
+
+    public function save(CategoryRequest $request){
+        Category::create($request->validated());
+        Toast::success('Категория создана');
+    }
+
+    public function asyncUpdateCategory(Category $category){
+        return [
+            'category' => $category
+        ];
+    }
+
+    public function update(Category $category, Request $request){
+        $category->fill($request->post('category'))->save();
+
+        Toast::success('Категория изменена');
+    }
+
+    public function remove(Category $category){
+        $category->find($category->id)->delete();
+        Toast::warning('Категория удалена!');
+    }
+
+
 }

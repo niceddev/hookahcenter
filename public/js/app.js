@@ -18772,6 +18772,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -25787,20 +25790,35 @@ var render = function () {
             staticClass:
               "nav nav-pills d-flex flex-wrap justify-content-between",
           },
-          _vm._l(_vm.categories, function (category) {
-            return _c("li", { key: category.id, staticClass: "nav-item" }, [
-              _c("a", { staticClass: "categorylink", attrs: { href: "#" } }, [
-                _vm._v(_vm._s(category.name)),
-              ]),
-            ])
-          }),
-          0
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.categories, function (category) {
+              return _c("li", { key: category.id, staticClass: "nav-item" }, [
+                _c("a", { staticClass: "categorylink", attrs: { href: "#" } }, [
+                  _vm._v(_vm._s(category.name)),
+                ]),
+              ])
+            }),
+          ],
+          2
         ),
       ]),
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "categorylink", attrs: { href: "#" } }, [
+        _vm._v("Все"),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -25829,7 +25847,7 @@ var render = function () {
     [
       _c(
         "div",
-        { staticClass: "container d-flex flex-wrap justify-content-center" },
+        { staticClass: "container d-flex flex-wrap" },
         [
           !_vm.loaded
             ? _c("div", { staticClass: "lds-ring" }, [
@@ -25849,7 +25867,10 @@ var render = function () {
               },
               [
                 _c("div", { staticClass: "card-body" }, [
-                  _c("img", { attrs: { src: "", alt: "productimage" } }),
+                  _c("img", {
+                    staticClass: "img-thumbnail",
+                    attrs: { src: product.image_path, alt: "productimage" },
+                  }),
                   _vm._v(" "),
                   _c("h5", { staticClass: "card-title" }, [
                     _vm._v(_vm._s(product.name)),
