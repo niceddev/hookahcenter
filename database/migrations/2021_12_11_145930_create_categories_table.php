@@ -18,23 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
         });
 
-        DB::table('categories')->insert([
-            [
-                'name' => 'Кальяны',
-            ],
-            [
-                'name' => 'Табаки',
-            ],
-            [
-                'name' => 'Электронки',
-            ],
-            [
-                'name' => 'Колбы',
-            ],
-            [
-                'name' => 'Чаши',
-            ],
-        ]);
     }
 
     /**

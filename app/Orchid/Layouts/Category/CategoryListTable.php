@@ -34,8 +34,8 @@ class CategoryListTable extends Table
             TD::make('№')
                 ->width('80px')
                 ->cantHide()
-                ->render(function (){
-                    //order blyat
+                ->render(function (Category $category){
+                    return $category->id;
                 }),
             TD::make('name', 'Категория')
                 ->cantHide(),

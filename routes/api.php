@@ -16,4 +16,4 @@ use App\Http\Controllers\Api\v1\ProductController;
 */
 
 Route::get('categories', [CategoryController::class, 'index']);
-Route::apiResource('products', ProductController::class);
+Route::get('products', [ProductController::class, 'index']);
