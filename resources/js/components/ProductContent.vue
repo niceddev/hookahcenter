@@ -1,21 +1,29 @@
 <template :class="{ loaded: true }">
     <div>
-        <ProductModalWindow
-            v-if="isModalWindowVisible"
-            @hide-modal-window="hideModalWindow()"
-        />
-        <div id="products" class="products container-fluid">
-            <div class="container d-flex flex-wrap">
-                <div v-if="!loaded" class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                <div class="card shadow p-3 mb-5 bg-body rounded"
+        <transition name="fade">
+            <ProductModalWindow
+                v-if="isModalWindowVisible"
+                @hide-modal-window="hideModalWindow()"
+                :dataSet="modalProductData"
+            />
+        </transition>
+        <div id="products" class="container mb-5">
+            <div v-if="!loaded" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div class="row justify-content-lg-start justify-content-md-center">
+                <div class="col-md-5 col-lg-3 p-4 shadow rounded flex-column"
                      v-for="product in products"
                      :key="product.id"
-                     @click="showModalWindow()">
-                    <div class="card-body">
-                        <img class="img-thumbnail" :src="product.image_path" alt="productimage">
-                        <h5 class="card-title">{{product.name}}</h5>
+                     @click="showModalWindow(product)">
+                    <div class="card p-lg-4 p-md-3">
+                        <picture>
+                            <source :srcset="product.image_path" type="image/jpeg">
+                            <source :srcset="product.image_path" type="image/webp">
+                            <img class="img-fluid" :src="product.image_path">
+                        </picture>
+                        <h4 class="card-title">{{product.name}}</h4>
                         <p class="card-text">{{product.description}}</p>
-                        <p class="card-text">{{product.price}}</p>
+                        <p class="card-price">{{product.price}} ₸</p>
+                        <p>Подробнее...</p>
                     </div>
                 </div>
             </div>
@@ -31,7 +39,8 @@ export default {
         return {
             products: [],
             loaded: false,
-            isModalWindowVisible: false
+            isModalWindowVisible: false,
+            modalProductData: [],
         }
     },
     mounted() {
@@ -48,7 +57,8 @@ export default {
                     console.log(error)
                 })
         },
-        showModalWindow(){
+        showModalWindow(data){
+            this.modalProductData = data;
             this.isModalWindowVisible = true
         },
         hideModalWindow(){
@@ -60,3 +70,11 @@ export default {
     }
 }
 </script>
+<style>
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+</style>

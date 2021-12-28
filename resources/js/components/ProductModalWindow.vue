@@ -10,17 +10,34 @@
                     @click="hideModalWindow()"
                 />
             </div>
-            <div class="content">Content
-                <slot>
-                </slot>
+            <div class="row p-5">
+                <picture class="col-6">
+                    <source :srcset="dataSet.image_path" type="image/jpeg">
+                    <source :srcset="dataSet.image_path" type="image/webp">
+                    <img class="img-thumbnail" :src="dataSet.image_path">
+                </picture>
+                <div class="col-6 d-flex flex-column">
+                    <h1 class="fw-bold">{{dataSet.name}}</h1>
+                    <p class="text-black-50 fs-3 mt-2">{{dataSet.description}}</p>
+                    <p class="fw-bold text-end fs-1 mt-auto">{{dataSet.price}} ₸</p>
+                    <a href="#">
+                        <fa class="svglink"
+                            :icon="['fab', 'whatsapp']"
+                            size="2x"/>
+                    </a>
+                </div>
             </div>
-            <div class="footer">Footer</div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: {
+        dataSet: {
+            type: Object
+        }
+    },
     methods:{
         hideModalWindow(){
             this.$emit('hide-modal-window')
@@ -45,7 +62,8 @@ export default {
     position: fixed;
     top: 150px;
     left: 50%;
-    width: 800px;
+    min-width: 800px;
+    max-width: 900px;
     margin-left: -400px;
     background: #ffffff;
     box-shadow: 0 0 10px 0 #e7e7e7;
@@ -54,5 +72,19 @@ export default {
 .modalWindow svg{
     float: right;
     margin-right: -60px;
+}
+.modalWindow .row>div{
+    min-height: 300px;
+}
+.modalWindow .row>div>a svg{
+    color: #000;
+    /*width:60px;*/
+    /*height:60px;*/
+    /*bottom:40px;*/
+    /*background-color:#25d366;*/
+    /*border-radius:50px;*/
+    /*text-align:center;*/
+    /*font-size:30px;*/
+    /*box-shadow: 2px 2px 3px #999;*/
 }
 </style>

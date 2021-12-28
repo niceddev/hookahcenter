@@ -230,8 +230,13 @@ h1.text-center, .text-center.h1 {
 }
 
 #categories .categorylink:active {
-  color: #000 !important;
-  background-color: #fff;
+  border-color: #dc3545;
+  color: #dc3545 !important;
+}
+
+#categories .categorylink:hover {
+  border-color: #dc3545;
+  color: #dc3545;
 }
 
 /***************PRODUCT CONTENT***************/
@@ -241,13 +246,40 @@ h1.text-center, .text-center.h1 {
 
 #products .card {
   cursor: pointer;
-  margin: 0 20px;
-  width: 350px;
-  height: 480px;
+  height: 550px;
+}
+
+#products .card-title {
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 #products .card:hover {
   outline: 5px solid #dc3545;
+}
+
+#products .card-text {
+  overflow: hidden;
+  position: relative;
+  height: 20%;
+  color: lightslategray;
+}
+
+#products .card-text:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 1.2em;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
+  pointer-events: none;
+}
+
+#products .card-price {
+  font-weight: 700;
+  font-size: 28px;
 }
 
 /*!
