@@ -8,10 +8,10 @@
                         <img src="/images/logo.svg" alt="">
                     </div>
                     <div class="row justify-content-center">
-                        <a class="cataloglink text-center text-white" href="/products">
+                        <router-link class="cataloglink text-center text-white" :to="{ name: 'products' }">
                             Перейти в каталог
                             <fa class="align-middle" :icon="['fas', 'long-arrow-alt-right']" size="md"/>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>

@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        $products = Product::withFilters(
+            request()->input('category','3')
+        )->get();
+
+        return ProductResource::collection($products);
     }
+
 
 }

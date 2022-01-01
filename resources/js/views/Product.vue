@@ -1,7 +1,6 @@
 <template>
-    <div class="container-fluid p-0">
+    <div class="flex-column">
         <Header/>
-        <ProductCategory></ProductCategory>
         <ProductContent></ProductContent>
         <Footer/>
     </div>
@@ -11,11 +10,9 @@
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import ProductContent from "../components/ProductContent";
-import ProductCategory from "../components/ProductCategory";
 
 export default{
     components: {
-        ProductCategory,
         ProductContent,
         Header,
         Footer

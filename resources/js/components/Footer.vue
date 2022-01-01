@@ -9,7 +9,8 @@
                 <div class="col-6 text-center">
                     <ul class="nav justify-content-center">
                         <li class="nav-item" v-for="link in links">
-                            <a class="nav-link" :href="'/#'+link.section" :key="link.section">{{link.text}}</a>
+                            <router-link class="nav-link" :to="{ name:'home', hash: '#' + link.section }" :key="link.section">{{link.text}}</router-link>
+<!--                            TODO anchor doesn't work-->
                         </li>
                     </ul>
                 </div>

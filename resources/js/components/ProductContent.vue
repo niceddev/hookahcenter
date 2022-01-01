@@ -7,23 +7,28 @@
                 :dataSet="modalProductData"
             />
         </transition>
+        <ProductCategory
+            @selectedCategory="changeCategory"/>
         <div id="products" class="container mb-5">
-            <div v-if="!loaded" class="lds-ring"><div></div><div></div><div></div><div></div></div>
-            <div class="row justify-content-lg-start justify-content-md-center">
-                <div class="col-md-5 col-lg-3 p-4 shadow rounded flex-column"
+            <div class="row justify-content-lg-start justify-content-md-center position-relative">
+                <Loader v-if="!loaded"/>
+<!--                <ProductItem/>-->
+                <div class="col-md-5 col-lg-3 p-4 flex-column"
                      v-for="product in products"
-                     :key="product.id"
-                     @click="showModalWindow(product)">
-                    <div class="card p-lg-4 p-md-3">
-                        <picture>
+                     :key="product.id">
+                    <div class="card p-lg-4 p-md-3 d-flex flex-column"
+                         @click="showModalWindow(product)">
+                        <picture class="bg-primary">
                             <source :srcset="product.image_path" type="image/jpeg">
                             <source :srcset="product.image_path" type="image/webp">
-                            <img class="img-fluid" :src="product.image_path">
+                            <img class="img-fluid card-img-top" :src="product.image_path">
                         </picture>
-                        <h4 class="card-title">{{product.name}}</h4>
-                        <p class="card-text">{{product.description}}</p>
-                        <p class="card-price">{{product.price}} ₸</p>
-                        <p>Подробнее...</p>
+                        <div class="card-body">
+                            <h4 class="card-title bg-secondary">{{product.name}}</h4>
+                            <p class="card-text bg-danger">{{product.description}}</p>
+                            <p class="card-price bg-secondary mt-auto">{{product.price}} ₸</p>
+                            <p class="bg-secondary">Подробнее...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -33,6 +38,9 @@
 
 <script>
 import ProductModalWindow from "./ProductModalWindow";
+import ProductCategory from "./ProductCategory";
+import ProductItem from "./ProductItem";
+import Loader from "./Loader";
 
 export default {
     data(){
@@ -41,14 +49,27 @@ export default {
             loaded: false,
             isModalWindowVisible: false,
             modalProductData: [],
+            selectedCategory: ''
         }
     },
     mounted() {
         this.loadProducts()
     },
+    watch:{
+        selectedCategory: {
+            handler: function (){
+                this.loadProducts()
+                this.loaded = false
+            }
+        }
+    },
     methods: {
+        changeCategory(category){
+            this.selectedCategory = category
+            this.loaded = true;
+        },
         loadProducts: function () {
-            axios.get('/api/products')
+            axios.get('api/products/?category='+this.selectedCategory)
                 .then(response => {
                     this.products = response.data.data
                     this.loaded = true
@@ -66,7 +87,10 @@ export default {
         }
     },
     components: {
-        ProductModalWindow
+        ProductModalWindow,
+        ProductCategory,
+        ProductItem,
+        Loader
     }
 }
 </script>

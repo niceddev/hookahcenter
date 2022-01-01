@@ -1,9 +1,9 @@
 <template>
-    <div class="container-fluid p-0">
-        <HeadSection></HeadSection>
-        <AboutSection></AboutSection>
-        <AddressSection></AddressSection>
-        <Footer></Footer>
+    <div class="flex-column">
+        <HeadSection/>
+        <AboutSection/>
+        <AddressSection/>
+        <Footer/>
     </div>
 </template>
 
@@ -18,7 +18,7 @@ export default{
         HeadSection,
         AboutSection,
         AddressSection,
-        Footer
+        Footer,
     },
 }
 </script>

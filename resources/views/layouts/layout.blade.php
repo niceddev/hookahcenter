@@ -9,8 +9,8 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div id="app">
-        @yield('content')
+    <div id="app" class="container-fluid p-0">
+        <router-view></router-view>
     </div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>

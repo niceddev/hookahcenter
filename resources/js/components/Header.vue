@@ -5,7 +5,9 @@
             <a href="#"><fa class="svglink" :icon="['fab', 'instagram']" size="2x"/></a>
         </div>
         <div class="col text-center">
-            <p class="fs-1">HOOKAH<span class="fw-bold text-danger">.</span>CENTER</p>
+            <router-link :to="{ name: 'home' }" class="text-white text-decoration-none">
+                HOOKAH<span class="fw-bold text-danger">.</span>CENTER
+            </router-link>
         </div>
         <div class="col text-end">
             <a href="#"><fa class="svglink" :icon="['fas', 'search']" size="2x"/></a>

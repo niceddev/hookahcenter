@@ -1,18 +1,28 @@
+<template>
+    <div class="lds-ring d-flex justify-content-center align-items-center"><div></div><div></div><div></div><div></div></div>
+</template>
+
+<script>
+
+</script>
+
+<style>
 .lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
     margin-bottom: 100px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 99;
 }
 .lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 200px;
+    height: 200px;
     margin: 8px;
-    border: 8px solid #fff;
+    border: 16px solid #fff;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
@@ -34,3 +44,4 @@
         transform: rotate(360deg);
     }
 }
+</style>

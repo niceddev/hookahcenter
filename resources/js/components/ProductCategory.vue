@@ -1,13 +1,23 @@
 <template>
     <div id="categories" class="categories container-fluid">
         <div class="container">
-            <h1 class="text-center">КАТАЛОГ</h1>
-            <ul class="nav nav-pills d-flex flex-wrap justify-content-between">
+            <ul class="nav d-flex flex-wrap justify-content-between">
                 <li class="nav-item">
-                    <a class="categorylink" href="#">Все</a>
+                    <input id="all"
+                           type="radio"
+                           name="category"
+                           value=""
+                           checked
+                           v-model="selectedCategory">
+                    <label for="all">Все</label>
                 </li>
                 <li class="nav-item" v-for="category in categories" :key="category.id">
-                    <a class="categorylink" href="#">{{ category.name }}</a>
+                    <input :id="category.name"
+                           type="radio"
+                           name="category"
+                           :value="category.id"
+                           v-model="selectedCategory">
+                    <label :for="category.name">{{ category.name }}</label>
                 </li>
             </ul>
         </div>
@@ -19,10 +29,18 @@ export default {
     data(){
         return {
             categories: [],
+            selectedCategory: '',
         }
     },
     mounted(){
         this.loadCategories()
+    },
+    watch:{
+      selectedCategory: {
+          handler: function (){
+              this.$emit('selectedCategory', this.selectedCategory)
+          }
+      }
     },
     methods: {
         loadCategories: function (){
@@ -31,9 +49,10 @@ export default {
                     this.categories = response.data
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log(error)
                 })
         },
+
     }
 }
 </script>
