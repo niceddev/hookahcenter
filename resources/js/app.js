@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import store from './store/index'
 import VueRouter from 'vue-router'
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -21,7 +22,12 @@ window.axios = require('axios');
 
 new Vue({
     el: '#app',
-    components: { Home, Product },
+    components: {
+        Home,
+        Product,
+    },
+    store,
     router,
 });
+
 

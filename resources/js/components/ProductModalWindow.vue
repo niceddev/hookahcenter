@@ -1,18 +1,19 @@
 <template>
     <div class="wrapper"
-         @click="hideModalWindow()">
+         v-if="isOpen"
+         @click="close()">
         <div class="modalWindow" @click.stop="">
             <div class="header">
                 <fa
                     :icon="['fas', 'window-close']"
                     size="3x"
                     color="white"
-                    @click="hideModalWindow()"
+                    @click="close()"
                 />
             </div>
             <div class="row p-5">
                 <picture class="col-6">
-                    <source :srcset="dataSet.image_path" type="image/jpeg">
+                    <source srcset="images/noimage.jpg" type="image/jpeg">
                     <source :srcset="dataSet.image_path" type="image/webp">
                     <img class="img-thumbnail" :src="dataSet.image_path">
                 </picture>
@@ -20,7 +21,7 @@
                     <h1 class="fw-bold">{{dataSet.name}}</h1>
                     <p class="text-black-50 fs-3 mt-2">{{dataSet.description}}</p>
                     <p class="fw-bold text-end fs-1 mt-auto">{{dataSet.price}} ₸</p>
-                    <a href="#">
+                    <a :href="'https://api.whatsapp.com/send?phone=' + phoneNumber" target="_blank">
                         <fa class="svglink"
                             :icon="['fab', 'whatsapp']"
                             size="2x"/>
@@ -33,14 +34,20 @@
 
 <script>
 export default {
-    props: {
-        dataSet: {
-            type: Object
+    data(){
+        return {
+            isOpen: false,
+            phoneNumber: '87058362143',
+            dataSet: {}
         }
     },
     methods:{
-        hideModalWindow(){
-            this.$emit('hide-modal-window')
+        open(product){
+            this.dataSet = product
+            this.isOpen = true
+        },
+        close(){
+            this.isOpen = false
         }
     }
 }

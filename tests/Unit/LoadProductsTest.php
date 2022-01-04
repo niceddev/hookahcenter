@@ -13,7 +13,7 @@ class LoadProductsTest extends TestCase
      */
     public function test_load_products(){
 
-        $response = $this->get('/products');
+        $response = $this->get('/products.js');
 
         $response->assertStatus(200);
 

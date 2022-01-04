@@ -11,13 +11,13 @@
                            v-model="selectedCategory">
                     <label for="all">Все</label>
                 </li>
-                <li class="nav-item" v-for="category in categories" :key="category.id">
-                    <input :id="category.name"
+                <li class="nav-item" v-for="category in getAllCategories" :key="category.id">
+                    <input :id="category.id"
                            type="radio"
                            name="category"
                            :value="category.id"
                            v-model="selectedCategory">
-                    <label :for="category.name">{{ category.name }}</label>
+                    <label :for="category.id">{{ category.name }}</label>
                 </li>
             </ul>
         </div>
@@ -25,34 +25,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     data(){
         return {
-            categories: [],
             selectedCategory: '',
         }
     },
-    mounted(){
-        this.loadCategories()
+    computed: mapGetters(['getAllCategories']),
+    mounted() {
+        this.$store.dispatch('getCategoriesDataSet')
     },
     watch:{
       selectedCategory: {
-          handler: function (){
-              this.$emit('selectedCategory', this.selectedCategory)
+          handler(){
+              this.$store.commit('setSelectedCategory', this.selectedCategory)
           }
       }
     },
-    methods: {
-        loadCategories: function (){
-            axios.get('/api/categories')
-                .then(response => {
-                    this.categories = response.data
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-
-    }
 }
 </script>

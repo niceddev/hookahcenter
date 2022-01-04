@@ -17,7 +17,7 @@ class ProductListTable extends Table
      *
      * @var string
      */
-    protected $target = 'products';
+    protected $target = 'products.js';
 
     /**
      * Get the table cells to be displayed.

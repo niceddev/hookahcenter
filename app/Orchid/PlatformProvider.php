@@ -28,7 +28,7 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             Menu::make('Добавить продукт')
-                ->route('platform.products')
+                ->route('platform.products.js')
                 ->icon('database')
                 ->title('Панель управления'),
 

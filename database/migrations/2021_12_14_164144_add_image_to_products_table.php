@@ -13,7 +13,7 @@ class AddImageToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('products.js', function (Blueprint $table) {
             $table->string('image_path');
         });
     }
@@ -25,7 +25,7 @@ class AddImageToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('products.js', function (Blueprint $table) {
             $table->string('image_path');
         });
     }

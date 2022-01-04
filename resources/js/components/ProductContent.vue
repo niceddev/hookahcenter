@@ -1,27 +1,22 @@
 <template :class="{ loaded: true }">
     <div>
         <transition name="fade">
-            <ProductModalWindow
-                v-if="isModalWindowVisible"
-                @hide-modal-window="hideModalWindow()"
-                :dataSet="modalProductData"
-            />
+            <ProductModalWindow ref="productModalWindow"/>
         </transition>
-        <ProductCategory
-            @selectedCategory="changeCategory"/>
+        <ProductCategory/>
         <div id="products" class="container mb-5">
             <div class="row justify-content-lg-start justify-content-md-center position-relative">
                 <Loader v-if="!loaded"/>
 <!--                <ProductItem/>-->
                 <div class="col-md-5 col-lg-3 p-4 flex-column"
-                     v-for="product in products"
+                     v-for="product in getAllProducts"
                      :key="product.id">
                     <div class="card p-lg-4 p-md-3 d-flex flex-column"
-                         @click="showModalWindow(product)">
+                         @click="openProductModalWindow(product)">
                         <picture class="bg-primary">
-                            <source :srcset="product.image_path" type="image/jpeg">
+                            <source srcset="images/noimage.jpg" type="image/jpeg">
                             <source :srcset="product.image_path" type="image/webp">
-                            <img class="img-fluid card-img-top" :src="product.image_path">
+                            <img class="img-fluid card-img-top" src="images/noimage.jpg">
                         </picture>
                         <div class="card-body">
                             <h4 class="card-title bg-secondary">{{product.name}}</h4>
@@ -37,53 +32,43 @@
 </template>
 
 <script>
-import ProductModalWindow from "./ProductModalWindow";
-import ProductCategory from "./ProductCategory";
-import ProductItem from "./ProductItem";
-import Loader from "./Loader";
+import ProductModalWindow from "./ProductModalWindow"
+import ProductCategory from "./ProductCategory"
+import ProductItem from "./ProductItem"
+import Loader from "./Loader"
+import { mapGetters } from 'vuex'
 
 export default {
     data(){
         return {
-            products: [],
-            loaded: false,
-            isModalWindowVisible: false,
-            modalProductData: [],
-            selectedCategory: ''
+            // loaded: false,
+            loaded: true,
         }
     },
+    computed: mapGetters([
+        'getAllProducts',
+        'getSelectedCategory'
+    ]),
     mounted() {
-        this.loadProducts()
+        this.$store.dispatch({
+            type: 'getProductsDataSet',
+            selectedCategory: this.$store.getters.getSelectedCategory
+        })
     },
     watch:{
-        selectedCategory: {
+        getSelectedCategory: {
             handler: function (){
-                this.loadProducts()
-                this.loaded = false
+                this.$store.dispatch({
+                    type: 'getProductsDataSet',
+                    selectedCategory: this.$store.getters.getSelectedCategory
+                })
+                // this.loaded = false
             }
         }
     },
     methods: {
-        changeCategory(category){
-            this.selectedCategory = category
-            this.loaded = true;
-        },
-        loadProducts: function () {
-            axios.get('api/products/?category='+this.selectedCategory)
-                .then(response => {
-                    this.products = response.data.data
-                    this.loaded = true
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-        showModalWindow(data){
-            this.modalProductData = data;
-            this.isModalWindowVisible = true
-        },
-        hideModalWindow(){
-            this.isModalWindowVisible = false
+        openProductModalWindow(product){
+            this.$refs.productModalWindow.open(product)
         }
     },
     components: {

@@ -30,7 +30,7 @@ Route::screen('/main', PlatformScreen::class)
 
 // Custom
 Route::screen('/product', ProductListScreen::class)
-    ->name('platform.products');
+    ->name('platform.products.js');
 
 Route::screen('/category', CategoryListScreen::class)
     ->name('platform.categories');

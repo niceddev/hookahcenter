@@ -1,6 +1,6 @@
 <!--<template>-->
 <!--    <div class="col-md-5 col-lg-3 p-4 flex-column"-->
-<!--         v-for="product in products"-->
+<!--         v-for="product in products.js"-->
 <!--         :key="product.id">-->
 <!--        <div class="card p-lg-4 p-md-3 d-flex flex-column"-->
 <!--             @click="showModalWindow(product)">-->
@@ -31,7 +31,7 @@
 <!--    },-->
 <!--    methods:{-->
 <!--        loadProductItems(){-->
-<!--            axios.get('api/products/?category=' + this.selectedItem).then().catch()-->
+<!--            axios.get('api/products.js/?category=' + this.selectedItem).then().catch()-->
 <!--        }-->
 <!--    },-->
 

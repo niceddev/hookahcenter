@@ -35,7 +35,7 @@ class ProductListScreen extends Screen
     public function query(): array
     {
         return [
-            'products' => Product::with('category')->filters()->paginate(20),
+            'products.js' => Product::with('category')->filters()->paginate(20),
             ];
     }
 
