@@ -14,4 +14,5 @@ use App\Http\Controllers\Api\v1\ProductController;
 */
 
 Route::view('/', 'home')->name('home');
-Route::view('/products', 'product')->name('product');
+//Route::view('/products', 'product')->name('product');
+Route::get('/products', [ProductController::class, 'index2'])->name('product');

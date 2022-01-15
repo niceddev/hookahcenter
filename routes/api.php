@@ -15,5 +15,5 @@ use App\Http\Controllers\Api\v1\ProductController;
 |
 */
 
-Route::get('categories', [CategoryController::class, 'index']);
-Route::get('products', [ProductController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);

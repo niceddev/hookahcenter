@@ -31,14 +31,15 @@ class Product extends Model
 
     public function scopeWithFilters($query, $category)
     {
-        if(!$category) {
+        if($category == '') {
             return $query;
         }
 
         return $query->where('category_id', $category);
     }
 
-//    public function getImagePathAttribute(){
+//    public function getImagePathAttribute()
+//    {
 //        if(!$this->attributes['image_path']) {
 //            return '/images';
 //        }

@@ -1,23 +1,23 @@
 <template>
     <div id="categories" class="categories container-fluid">
         <div class="container">
-            <ul class="nav d-flex flex-wrap justify-content-between">
-                <li class="nav-item">
-                    <input id="all"
+            <ul class="nav btn-group justify-content-evenly">
+                <li class="nav-item mt-2">
+                    <input id="all" class="btn-check"
                            type="radio"
                            name="category"
                            value=""
                            checked
                            v-model="selectedCategory">
-                    <label for="all">Все</label>
+                    <label for="all" class="fs-5 btn btn-outline-light border-2">Все</label>
                 </li>
-                <li class="nav-item" v-for="category in getAllCategories" :key="category.id">
-                    <input :id="category.id"
+                <li class="nav-item mt-2" v-for="category in getAllCategories" :key="category.id">
+                    <input :id="category.id" class="btn-check"
                            type="radio"
                            name="category"
                            :value="category.id"
                            v-model="selectedCategory">
-                    <label :for="category.id">{{ category.name }}</label>
+                    <label :for="category.id" class="fs-5 btn btn-outline-light border-2">{{ category.name }}</label>
                 </li>
             </ul>
         </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     data(){
@@ -34,8 +34,9 @@ export default {
         }
     },
     computed: mapGetters(['getAllCategories']),
+    methods: mapActions(['getCategoriesDataSet']),
     mounted() {
-        this.$store.dispatch('getCategoriesDataSet')
+        this.getCategoriesDataSet()
     },
     watch:{
       selectedCategory: {

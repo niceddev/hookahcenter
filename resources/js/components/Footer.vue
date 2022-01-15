@@ -9,14 +9,16 @@
                 <div class="col-6 text-center">
                     <ul class="nav justify-content-center">
                         <li class="nav-item" v-for="link in links">
-                            <router-link class="nav-link" :to="{ name:'home', hash: '#' + link.section }" :key="link.section">{{link.text}}</router-link>
+                            <router-link class="nav-link"
+                                         :key="link.section"
+                                         :to="{ name:'home', hash: '#' + link.section }">{{link.text}}</router-link>
 <!--                            TODO anchor doesn't work-->
                         </li>
                     </ul>
                 </div>
                 <div class="col-2 text-end">
-                    <a href="#"><fa :icon="['fab', 'vk']" size="2x"/></a>
-                    <a href="#"><fa :icon="['fab', 'instagram']" size="2x"/></a>
+                    <a href="https://vk.com" target="_blank"><fa :icon="['fab', 'vk']" size="2x"/></a>
+                    <a href="https://instagram.com" target="_blank"><fa :icon="['fab', 'instagram']" size="2x"/></a>
                 </div>
             </div>
         </div>

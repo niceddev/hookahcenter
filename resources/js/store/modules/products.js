@@ -2,11 +2,10 @@ let apiUrl = 'api/products/?category='
 
 export default  {
     state:{
-        products: []
+        products: [],
     },
     actions: {
         getProductsDataSet(context, selectedCategory){
-            console.log(selectedCategory)
             axios.get(apiUrl + selectedCategory.selectedCategory)
                 .then(response => {
                     context.commit('updateProductsDataSet', response.data.data)

@@ -3,29 +3,36 @@
          v-if="isOpen"
          @click="close()">
         <div class="modalWindow" @click.stop="">
-            <div class="header">
-                <fa
-                    :icon="['fas', 'window-close']"
-                    size="3x"
-                    color="white"
-                    @click="close()"
-                />
-            </div>
             <div class="row p-5">
-                <picture class="col-6">
-                    <source srcset="images/noimage.jpg" type="image/jpeg">
-                    <source :srcset="dataSet.image_path" type="image/webp">
-                    <img class="img-thumbnail" :src="dataSet.image_path">
-                </picture>
-                <div class="col-6 d-flex flex-column">
-                    <h1 class="fw-bold">{{dataSet.name}}</h1>
-                    <p class="text-black-50 fs-3 mt-2">{{dataSet.description}}</p>
-                    <p class="fw-bold text-end fs-1 mt-auto">{{dataSet.price}} ₸</p>
-                    <a :href="'https://api.whatsapp.com/send?phone=' + phoneNumber" target="_blank">
-                        <fa class="svglink"
-                            :icon="['fab', 'whatsapp']"
-                            size="2x"/>
-                    </a>
+                <div class="row">
+                    <picture class="col-6">
+                        <source srcset="images/noimage.jpg" type="image/jpeg">
+                        <source :srcset="dataSet.image_path" type="image/webp">
+                        <img class="card-img-top" :src="dataSet.image_path">
+                    </picture>
+                    <h1 class="col-5 m-4 fw-bold fs-1">{{ dataSet.name }}</h1>
+                </div>
+                <div class="row p-4">
+                    <p class="col-12 text-secondary fs-3 mt-2">{{ dataSet.description }}</p>
+                </div>
+                <div class="row fw-bold">
+                    <div class="row col-6 align-items-center">
+                        <p class="col-4 fs-4 text-secondary">Цена: </p>
+                        <p class="col-8 fs-1">{{ dataSet.price }} ₸</p>
+                    </div>
+                    <div class="row col-6 align-items-center">
+                        <p class="col-8 fs-4 text-secondary">Заказать через</p>
+                        <a class="col-2 text-decoration-none align-items-center" :href="'https://api.whatsapp.com/send?phone=' + phoneNumber" target="_blank">
+                            <fa class="svglink mx-3"
+                                :icon="['fab', 'whatsapp']"
+                                size="2x"/>
+                        </a>
+<!--                        <a class="col-2 text-decoration-none align-items-center">-->
+<!--                            <fa class="svglink mx-3"-->
+<!--                                :icon="['fab', 'call']"-->
+<!--                                size="2x"/>-->
+<!--                        </a>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,22 +83,7 @@ export default {
     box-shadow: 0 0 10px 0 #e7e7e7;
     z-index: 98;
 }
-.modalWindow svg{
-    float: right;
-    margin-right: -60px;
-}
-.modalWindow .row>div{
-    min-height: 300px;
-}
-.modalWindow .row>div>a svg{
+.svglink path{
     color: #000;
-    /*width:60px;*/
-    /*height:60px;*/
-    /*bottom:40px;*/
-    /*background-color:#25d366;*/
-    /*border-radius:50px;*/
-    /*text-align:center;*/
-    /*font-size:30px;*/
-    /*box-shadow: 2px 2px 3px #999;*/
 }
 </style>

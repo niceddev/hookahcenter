@@ -124,41 +124,11 @@ h1.text-center{
     margin-left: 18px;
     margin-right: 18px;
 }
-/***************CATEGORIES***************/
-#categories{
-    margin-bottom: 20px;
-}
-#categories .nav{
-    padding: 20px;
-}
-#categories h1{
-    margin-bottom: 40px;
-}
-#categories li{
-    margin: 15px auto;
-}
-#categories a{
-    font-size: 34px;
-}
-#categories .categorylink{
-    color: #fff !important;
-    padding: 10px 37px;
-    font-weight: 300;
-    text-decoration: none;
-    border: 2px solid white;
-}
-#categories .categorylink:active{
-    border-color: #dc3545;
-    color: #dc3545 !important;
-}
-#categories .categorylink:hover{
-    border-color: #dc3545;
-    color: #dc3545;
-}
 /***************PRODUCT CONTENT***************/
 #products{
     color: #000;
     min-height: 100vh;
+    padding-top: 20px;
 }
 #products .card{
     cursor: pointer;
@@ -168,13 +138,16 @@ h1.text-center{
     font-weight: 700;
     margin-top: 10px;
 }
+#products .card-body{
+    max-height: 200px;
+}
 #products .card:hover{
     outline: 5px solid #dc3545;
 }
 #products .card-text{
     overflow: hidden;
     position: relative;
-    height: 20%;
+    height: 55%;
     color: lightslategray;
 }
 #products .card-text:after{
