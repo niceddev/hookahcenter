@@ -1,8 +1,8 @@
 <template>
     <div id="categories" class="categories container-fluid">
         <div class="container">
-            <ul class="nav btn-group justify-content-evenly">
-                <li class="nav-item mt-2">
+            <ul class="nav btn-group justify-content-center">
+                <li class="mx-2 nav-item mt-2">
                     <input id="all" class="btn-check"
                            type="radio"
                            name="category"
@@ -11,7 +11,7 @@
                            v-model="selectedCategory">
                     <label for="all" class="fs-5 btn btn-outline-light border-2">Все</label>
                 </li>
-                <li class="nav-item mt-2" v-for="category in getAllCategories" :key="category.id">
+                <li class="mx-2 nav-item mt-2" v-for="category in getAllCategories" :key="category.id">
                     <input :id="category.id" class="btn-check"
                            type="radio"
                            name="category"
@@ -39,10 +39,8 @@ export default {
         this.getCategoriesDataSet()
     },
     watch:{
-      selectedCategory: {
-          handler(){
-              this.$store.commit('setSelectedCategory', this.selectedCategory)
-          }
+      selectedCategory: function (){
+          this.$store.commit('setSelectedCategory', this.selectedCategory)
       }
     },
 }

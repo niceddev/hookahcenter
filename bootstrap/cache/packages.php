@@ -17,6 +17,13 @@
       0 => 'BeyondCode\\QueryDetector\\QueryDetectorServiceProvider',
     ),
   ),
+  'dragon-code/laravel-migration-actions' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'DragonCode\\LaravelActions\\ServiceProvider',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 

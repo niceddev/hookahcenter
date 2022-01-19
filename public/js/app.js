@@ -18829,10 +18829,8 @@ __webpack_require__.r(__webpack_exports__);
     this.getCategoriesDataSet();
   },
   watch: {
-    selectedCategory: {
-      handler: function handler() {
-        this.$store.commit('setSelectedCategory', this.selectedCategory);
-      }
+    selectedCategory: function selectedCategory() {
+      this.$store.commit('setSelectedCategory', this.selectedCategory);
     }
   }
 });
@@ -18906,6 +18904,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -18914,7 +18917,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      isLoaded: true
+      isLoaded: true,
+      sortProductsBy: 'new'
     };
   },
   computed: (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(['getAllProducts', 'getSelectedCategory']),
@@ -18925,18 +18929,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   mounted: function mounted() {
     this.getProductsDataSet({
-      type: 'getProductsDataSet',
-      selectedCategory: this.getSelectedCategory
+      getSelectedCategory: this.getSelectedCategory,
+      sortProductsBy: this.sortProductsBy
     });
   },
   watch: {
-    getSelectedCategory: {
-      handler: function handler() {
-        this.getProductsDataSet({
-          type: 'getProductsDataSet',
-          selectedCategory: this.getSelectedCategory
-        });
-      }
+    getSelectedCategory: function getSelectedCategory() {
+      this.getProductsDataSet({
+        getSelectedCategory: this.getSelectedCategory,
+        sortProductsBy: this.sortProductsBy
+      });
+    },
+    sortProductsBy: function sortProductsBy() {
+      this.getProductsDataSet({
+        getSelectedCategory: this.getSelectedCategory,
+        sortProductsBy: this.sortProductsBy
+      });
     }
   },
   components: {
@@ -19306,14 +19314,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var apiUrl = 'api/products/?category=';
+var apiUrl = 'api/products/';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
     products: []
   },
   actions: {
-    getProductsDataSet: function getProductsDataSet(context, selectedCategory) {
-      axios.get(apiUrl + selectedCategory.selectedCategory).then(function (response) {
+    getProductsDataSet: function getProductsDataSet(context, _ref) {
+      var getSelectedCategory = _ref.getSelectedCategory,
+          sortProductsBy = _ref.sortProductsBy;
+      axios.get(apiUrl + '?category=' + getSelectedCategory + '&sortBy=' + sortProductsBy).then(function (response) {
         context.commit('updateProductsDataSet', response.data.data);
       })["catch"](function (error) {
         console.log(error);
@@ -26636,9 +26646,9 @@ var render = function () {
       _c("div", { staticClass: "container" }, [
         _c(
           "ul",
-          { staticClass: "nav btn-group justify-content-evenly" },
+          { staticClass: "nav btn-group justify-content-center" },
           [
-            _c("li", { staticClass: "nav-item mt-2" }, [
+            _c("li", { staticClass: "mx-2 nav-item mt-2" }, [
               _c("input", {
                 directives: [
                   {
@@ -26677,7 +26687,7 @@ var render = function () {
             _vm._l(_vm.getAllCategories, function (category) {
               return _c(
                 "li",
-                { key: category.id, staticClass: "nav-item mt-2" },
+                { key: category.id, staticClass: "mx-2 nav-item mt-2" },
                 [
                   _c("input", {
                     directives: [
@@ -26754,7 +26764,61 @@ var render = function () {
       _vm._v(" "),
       _c("ProductCategory"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "container my-4", attrs: { id: "sortby" } }, [
+        _c("div", { staticClass: "d-flex align-items-center" }, [
+          _c("label", [_vm._v("Сортировка:")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-2" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.sortProductsBy,
+                    expression: "sortProductsBy",
+                  },
+                ],
+                staticClass: "mx-3 form-select",
+                attrs: { name: "sortBy" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.sortProductsBy = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { selected: "", value: "new" } }, [
+                  _vm._v("Самые новые"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "old" } }, [
+                  _vm._v("Самые старые"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "asc" } }, [
+                  _vm._v("Самые дешевые"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "desc" } }, [
+                  _vm._v("Самые дорогие"),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "container mb-5", attrs: { id: "products" } }, [
         _c(
@@ -26843,33 +26907,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("form", { attrs: { action: "" } }),
-      _vm._v(" "),
-      _c("p", { staticClass: "col" }, [_vm._v("Сортировка: ")]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "col form-select",
-          attrs: { "aria-label": "Default select example" },
-        },
-        [
-          _c("option", { attrs: { selected: "" } }, [_vm._v("Самые новые")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Самые дешевые")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3" } }, [_vm._v("Самые дорогие")]),
-        ]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

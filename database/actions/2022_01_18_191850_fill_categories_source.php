@@ -1,18 +1,15 @@
 <?php
 
-namespace Database\Seeders;
-
-use Illuminate\Database\Seeder;
+use DragonCode\LaravelActions\Support\Actionable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
-class CategorySeeder extends Seeder
+class FillCategoriesSource extends Actionable
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+
+    protected $once = false;
+
+    public function up(): void
     {
         DB::table('categories')->insert([
             [
@@ -31,5 +28,10 @@ class CategorySeeder extends Seeder
                 'name' => 'Чаши',
             ],
         ]);
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
     }
 }

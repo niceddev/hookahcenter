@@ -27,6 +27,10 @@ h1.text-center, .text-center.h1 {
   font-weight: 700;
 }
 
+label {
+  cursor: pointer;
+}
+
 @media (min-width: 1400px) {
   .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1630px !important;
@@ -169,7 +173,8 @@ h1.text-center, .text-center.h1 {
 }
 
 #products .card-body {
-  max-height: 200px;
+  overflow: hidden;
+  max-height: 150px;
 }
 
 #products .card:hover {
@@ -177,9 +182,7 @@ h1.text-center, .text-center.h1 {
 }
 
 #products .card-text {
-  overflow: hidden;
   position: relative;
-  height: 55%;
   color: lightslategray;
 }
 

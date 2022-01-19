@@ -13,10 +13,11 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products.js', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('image_path');
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->integer('price');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products.js');
+        Schema::dropIfExists('products');
     }
 }

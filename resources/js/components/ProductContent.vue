@@ -4,17 +4,22 @@
             <ProductModalWindow ref="productModalWindow"/>
         </transition>
         <ProductCategory/>
-        <div class="row">
-            <form action="">
-
-            </form>
-            <p class="col">Сортировка: </p>
-            <select class="col form-select" aria-label="Default select example">
-                <option selected>Самые новые</option>
-                <option value="1">Самые дешевые</option>
-                <option value="3">Самые дорогие</option>
-            </select>
+        <div id="sortby" class="container my-4">
+            <div class="d-flex align-items-center">
+                <label>Сортировка:</label>
+                <div class="col-2">
+                    <select class="mx-3 form-select" name="sortBy" v-model="sortProductsBy">
+                        <option selected value="new">Самые новые</option>
+                        <option value="old">Самые старые</option>
+                        <option value="asc">Самые дешевые</option>
+                        <option value="desc">Самые дорогие</option>
+                    </select>
+                </div>
+            </div>
         </div>
+<!--        <div>-->
+<!--        TODO: ViewList(List or Items)-->
+<!--        </div>-->
         <div id="products" class="container mb-5">
             <div class="row justify-content-lg-start justify-content-md-center position-relative">
                 <Loader v-if="!isLoaded"/>
@@ -54,6 +59,7 @@ export default {
     data(){
         return {
             isLoaded: true,
+            sortProductsBy: 'new'
         }
     },
     computed: mapGetters([
@@ -68,26 +74,30 @@ export default {
     },
     mounted() {
         this.getProductsDataSet({
-            type: 'getProductsDataSet',
-            selectedCategory: this.getSelectedCategory,
+            getSelectedCategory: this.getSelectedCategory,
+            sortProductsBy: this.sortProductsBy
         })
     },
     watch:{
-        getSelectedCategory: {
-            handler: function (){
-                this.getProductsDataSet({
-                    type: 'getProductsDataSet',
-                    selectedCategory: this.getSelectedCategory
-                })
-            }
+        getSelectedCategory: function (){
+            this.getProductsDataSet({
+                getSelectedCategory: this.getSelectedCategory,
+                sortProductsBy: this.sortProductsBy
+            })
+        },
+        sortProductsBy: function() {
+            this.getProductsDataSet({
+                getSelectedCategory: this.getSelectedCategory,
+                sortProductsBy: this.sortProductsBy
+            })
         }
     },
     components: {
         ProductModalWindow,
         ProductCategory,
         ProductItem,
-        Loader
-    }
+        Loader,
+    },
 }
 </script>
 <style>

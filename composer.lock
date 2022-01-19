@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c9bcf2e7181ff1425a20494baf1c2f2",
+    "content-hash": "de45db9cc03bc108878457c8b75f073e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -367,6 +367,254 @@
                 }
             ],
             "time": "2020-05-25T17:44:05+00:00"
+        },
+        {
+            "name": "dragon-code/contracts",
+            "version": "v2.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TheDragonCode/contracts.git",
+                "reference": "0a0f5a055ffa543c93fb0a437bef322e67257423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/contracts/zipball/0a0f5a055ffa543c93fb0a437bef322e67257423",
+                "reference": "0a0f5a055ffa543c93fb0a437bef322e67257423",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-message": "^1.0.1",
+                "symfony/http-kernel": "^4.0 || ^5.0 || ^6.0",
+                "symfony/polyfill-php80": "^1.23"
+            },
+            "conflict": {
+                "andrey-helldar/contracts": "*"
+            },
+            "require-dev": {
+                "illuminate/database": "^8.0",
+                "phpdocumentor/reflection-docblock": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DragonCode\\Contracts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Helldar",
+                    "email": "helldar@ai-rus.com"
+                }
+            ],
+            "description": "A set of contracts for any project",
+            "keywords": [
+                "contracts",
+                "interfaces"
+            ],
+            "support": {
+                "source": "https://github.com/TheDragonCode/contracts"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/helldar",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://yoomoney.ru/to/410012608840929",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/dragon-code",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/andrey_helldar",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-01-17T14:44:26+00:00"
+        },
+        {
+            "name": "dragon-code/laravel-migration-actions",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TheDragonCode/laravel-migration-actions.git",
+                "reference": "07adee00e6a6685a6679206e29a8d231719f5501"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/laravel-migration-actions/zipball/07adee00e6a6685a6679206e29a8d231719f5501",
+                "reference": "07adee00e6a6685a6679206e29a8d231719f5501",
+                "shasum": ""
+            },
+            "require": {
+                "dragon-code/contracts": "^2.15",
+                "dragon-code/laravel-support": "^3.2",
+                "illuminate/console": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/database": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "php": "^7.3 || ^8.0",
+                "symfony/console": "^4.3 || ^5.0 || ^6.0"
+            },
+            "conflict": {
+                "andrey-helldar/laravel-actions": "*",
+                "dragon-code/laravel-actions": "*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "phpunit/phpunit": "^8.0 || ^9.0",
+                "ramsey/uuid": "^3.7 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DragonCode\\LaravelActions\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DragonCode\\LaravelActions\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Helldar",
+                    "email": "helldar@ai-rus.com"
+                }
+            ],
+            "description": "Performing actions with saving the list of called files",
+            "keywords": [
+                "action",
+                "actions",
+                "andrey-helldar",
+                "dragon",
+                "dragon-code",
+                "laravel",
+                "migration",
+                "migrations"
+            ],
+            "support": {
+                "issues": "https://github.com/TheDragonCode/laravel-migration-actions/issues",
+                "source": "https://github.com/TheDragonCode/laravel-migration-actions"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/helldar",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://yoomoney.ru/to/410012608840929",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/dragon-code",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/andrey_helldar",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-01-18T12:21:50+00:00"
+        },
+        {
+            "name": "dragon-code/laravel-support",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TheDragonCode/laravel-support.git",
+                "reference": "de1d2d3e457916e46d3c28a579df73b2ed0f148e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/laravel-support/zipball/de1d2d3e457916e46d3c28a579df73b2ed0f148e",
+                "reference": "de1d2d3e457916e46d3c28a579df73b2ed0f148e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/database": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/http": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "php": "^7.2 || ^8.0",
+                "ramsey/uuid": "^3.7 || ^4.0",
+                "symfony/var-dumper": "^4.0 || ^5.0 || 6.0"
+            },
+            "conflict": {
+                "andrey-helldar/laravel-support": "*"
+            },
+            "require-dev": {
+                "laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "laravel/lumen-framework": "^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "suggest": {
+                "symfony/thanks": "Give thanks (in the form of a GitHub) to your fellow PHP package maintainers"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DragonCode\\LaravelSupport\\": "src"
+                },
+                "files": [
+                    "helpers/dumper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Helldar",
+                    "email": "helldar@ai-rus.com"
+                }
+            ],
+            "description": "Various helper files for the Laravel and Lumen frameworks",
+            "keywords": [
+                "andrey-helldar",
+                "dragon",
+                "dragon-code",
+                "framework",
+                "laravel",
+                "lumen",
+                "support"
+            ],
+            "support": {
+                "issues": "https://github.com/TheDragonCode/laravel-support/issues",
+                "source": "https://github.com/TheDragonCode/laravel-support"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/helldar",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://yoomoney.ru/to/410012608840929",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://opencollective.com/dragon-code",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/andrey_helldar",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-01-17T15:31:09+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",

@@ -13,6 +13,8 @@ class ProductController extends Controller
     {
         $products = Product::withFilters(
             request()->input('category')
+        )->sortBy(
+            request()->input('sortBy')
         )->get();
 
         return ProductResource::collection($products);

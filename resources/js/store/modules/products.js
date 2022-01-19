@@ -1,12 +1,12 @@
-let apiUrl = 'api/products/?category='
+let apiUrl = 'api/products/'
 
 export default  {
     state:{
         products: [],
     },
     actions: {
-        getProductsDataSet(context, selectedCategory){
-            axios.get(apiUrl + selectedCategory.selectedCategory)
+        getProductsDataSet(context, { getSelectedCategory, sortProductsBy }) {
+            axios.get(apiUrl + '?category=' + getSelectedCategory + '&sortBy=' + sortProductsBy)
                 .then(response => {
                     context.commit('updateProductsDataSet', response.data.data)
                 })
