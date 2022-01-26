@@ -2,20 +2,20 @@
     <div class="flex-column">
         <Header/>
         <ProductContent></ProductContent>
-        <Footer/>
+        <SectionFooter/>
     </div>
 </template>
 
 <script>
 import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import SectionFooter from '../components/SectionFooter.vue'
 import ProductContent from "../components/ProductContent";
 
 export default{
     components: {
         ProductContent,
         Header,
-        Footer
+        SectionFooter
     },
 }
 </script>

@@ -1,208 +1,175 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap);
-@charset "UTF-8";
 :after,
-:before {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
+:before{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
 }
-
 #app, html, body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  font-family: Montserrat;
-  color: #fff;
-  background: url("/images/__template_product-bg.png") repeat-y center #000;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: Montserrat;
+    color: #fff;
+    background: url('/images/__template_product-bg.png') repeat-y center #000;
 }
-
-a {
-  color: #000 !important;
-  font-weight: 500 !important;
-  font-size: 24px;
+a{
+    color: #000 !important;
+    font-weight: 500 !important;
+    font-size: 24px;
 }
-
-h1.text-center, .text-center.h1 {
-  font-weight: 700;
+h1.text-center{
+    font-weight: 700;
 }
-
-label {
-  cursor: pointer;
+label{
+    cursor: pointer;
 }
-
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1630px !important;
-  }
+    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 1630px !important;
+    }
 }
 /***************SECTION HEADER***************/
-.header-links {
-  padding-top: 130px;
-  margin-bottom: 60px;
+.header-links{
+    padding-top: 130px;
+    margin-bottom: 60px;
 }
-
-.header-links .col a {
-  margin-left: 18px;
-  margin-right: 18px;
+.header-links .col a{
+    margin-left: 18px;
+    margin-right: 18px;
 }
-
-.header-section {
-  background: url("/images/headSectionBg.jpg") no-repeat center;
-  background-size: cover;
-  min-height: 1791px;
+.header-section{
+    background: url('/images/headSectionBg.jpg') no-repeat center;
+    background-size: cover;
+    min-height: 1791px;
 }
-
-.svglink > path {
-  color: white;
-  width: 50px !important;
-  height: 50px !important;
+.svglink > path{
+    color: white;
+    width: 50px !important;
+    height: 50px !important;
 }
-
-.logo {
-  padding-top: 240px;
+.logo{
+    padding-top: 240px;
 }
-
-.header-section .col .cataloglink {
-  font-weight: 300;
-  width: 440px;
-  text-decoration: none;
-  margin-top: 40px;
-  padding: 20px;
-  border: 2px solid white;
+.header-section .col .cataloglink{
+    font-weight: 300;
+    width: 440px;
+    text-decoration: none;
+    margin-top: 40px;
+    padding: 20px;
+    border: 2px solid white;
 }
-
 /***************SECTION ABOUT***************/
-.about-section {
-  background: url("/images/__template-bg.png") no-repeat center #3F3F3F;
-  min-height: 950px;
-  padding: 80px;
+.about-section{
+    background: url('/images/__template-bg.png') no-repeat center #3F3F3F;
+    min-height: 950px;
+    padding: 80px;
 }
-
-.about-section h1, .about-section .h1 {
-  margin-bottom: 55px;
+.about-section h1{
+    margin-bottom: 55px;
 }
-
-.about-section .aboutus-text {
-  font-size: 24px;
-  text-align: justify;
+.about-section .aboutus-text{
+    font-size: 24px;
+    text-align: justify;
 }
-
-.about-section .aboutus-text span {
-  font-weight: 700;
-  font-size: 28px;
-  color: greenyellow;
+.about-section .aboutus-text span{
+    font-weight: 700;
+    font-size: 28px;
+    color: greenyellow;
 }
-
-.about-section .aboutus-img > img {
-  width: 600px;
-  height: 600px;
+.about-section .aboutus-img > img{
+    width: 600px;
+    height: 600px;
 }
-
 /***************SECTION ADDRESS***************/
-.address-section {
-  background-color: #6B6B6B;
-  min-height: 950px;
-  padding: 80px;
+.address-section{
+    background-color: #6B6B6B;
+    min-height: 950px;
+    padding: 80px;
 }
-
-.address-section h1, .address-section .h1 {
-  margin-bottom: 55px;
+.address-section h1{
+    margin-bottom: 55px;
 }
-
-.address-section .map {
-  position: relative;
+.address-section .map{
+    position: relative;
 }
-
-.address-section .map .card {
-  position: absolute;
-  top: 110px;
-  left: 130px;
-  color: #000;
+.address-section .map .card{
+    position: absolute;
+    top: 110px;
+    left: 130px;
+    color: #000;
 }
-
-.address-section .card-body {
-  width: 440px;
-  height: 460px;
+.address-section .card-body{
+    width: 440px;
+    height: 460px;
 }
-
-.address-section .card-title {
-  font-weight: 700;
-  font-size: 36px;
-  margin-top: 20px;
+.address-section .card-title{
+    font-weight: 700;
+    font-size: 36px;
+    margin-top: 20px;
 }
-
-.address-section .card-text {
-  font-size: 24px;
-  margin: -3px 0;
+.address-section .card-text{
+    font-size: 24px;
+    margin: -3px 0;
 }
-
 /***************SECTION FOOTER***************/
-.footer {
-  padding-top: 80px;
-  padding-bottom: 80px;
-  background-color: #fff;
+.footer{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #fff;
 }
-
-.footer .text-muted {
-  margin-top: -30px;
-  margin-left: 2px;
-  font-size: 17px;
+.footer .text-muted{
+    margin-top: -30px;
+    margin-left: 2px;
+    font-size: 17px;
 }
-
-.footer a {
-  margin-left: 18px;
-  margin-right: 18px;
+.footer a{
+    margin-left: 18px;
+    margin-right: 18px;
 }
-
 /***************PRODUCT CONTENT***************/
-#products {
-  color: #000;
-  min-height: 100vh;
-  padding-top: 20px;
+#products{
+    color: #000;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+#products .card{
+    cursor: pointer;
+    height: 550px;
+}
+#products .card-title{
+    font-weight: 700;
+    margin-top: 10px;
+}
+#products .card-body{
+    overflow: hidden;
+    max-height: 150px;
+}
+#products .card:hover{
+    outline: 5px solid #dc3545;
+}
+#products .card-text{
+    position: relative;
+    color: lightslategray;
+}
+#products .card-text:after{
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 1.2em;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
+    pointer-events: none;
+}
+#products .card-price{
+    font-weight: 700;
+    font-size: 28px;
 }
 
-#products .card {
-  cursor: pointer;
-  height: 550px;
-}
-
-#products .card-title {
-  font-weight: 700;
-  margin-top: 10px;
-}
-
-#products .card-body {
-  overflow: hidden;
-  max-height: 150px;
-}
-
-#products .card:hover {
-  outline: 5px solid #dc3545;
-}
-
-#products .card-text {
-  position: relative;
-  color: lightslategray;
-}
-
-#products .card-text:after {
-  content: "";
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  height: 1.2em;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
-  pointer-events: none;
-}
-
-#products .card-price {
-  font-weight: 700;
-  font-size: 28px;
-}
-
+@charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

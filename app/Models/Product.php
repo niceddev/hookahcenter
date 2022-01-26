@@ -4,32 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Filters\Filterable;
-use Orchid\Screen\AsSource;
 
 class Product extends Model
 {
     use HasFactory;
-    use AsSource;
-    use Filterable;
 
     protected $fillable = ['name', 'description', 'price', 'category_id', 'created_at', 'updated_at', 'image_path'];
-
-    protected $allowedSorts = [
-        'price',
-        'category_id'
-    ];
-
-    protected $allowedFilters = [
-        'name'
-    ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function scopeWithFilters($query, $category)
+    public function scopeWithCategory($query, $category)
     {
         if($category == '') {
             return $query;
@@ -54,14 +41,5 @@ class Product extends Model
         }
 
     }
-
-//    public function getImagePathAttribute()
-//    {
-//        if(!$this->attributes['image_path']) {
-//            return '/images';
-//        }
-//
-//        return $this->attributes['image_path'];
-//    }
 
 }

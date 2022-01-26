@@ -8,7 +8,7 @@
                         <img src="/images/logo.svg" alt="">
                     </div>
                     <div class="row justify-content-center">
-                        <router-link class="cataloglink text-center text-white" :to="{ name: 'products' }">
+                        <router-link class="cataloglink text-center text-white" :to="{ name: 'products' }" replace>
                             Перейти в каталог
                             <fa class="align-middle" :icon="['fas', 'long-arrow-alt-right']"/>
                         </router-link>

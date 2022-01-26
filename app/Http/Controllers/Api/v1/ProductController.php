@@ -11,7 +11,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::withFilters(
+        $products = Product::withCategory(
             request()->input('category')
         )->sortBy(
             request()->input('sortBy')
@@ -33,6 +33,12 @@ class ProductController extends Controller
 //
 //        $arr = [5,1,3];
 //        print_r($this->arrSum($arr));
+//        dd(collect(Product::all()));
+        $prod = Product::all()
+            ->sortByDesc('price')
+            ->pluck('price');
+        dd($prod);
+
 
         return view('product');
     }

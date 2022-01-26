@@ -1,4 +1,4 @@
-let apiUrl = 'api/categories'
+let apiUrl = '/api/categories/'
 
 export default {
     state:{

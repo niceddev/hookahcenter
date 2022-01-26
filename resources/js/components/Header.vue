@@ -6,9 +6,9 @@
             <a href="https://instagram.com" target="_blank"><fa class="svglink" :icon="['fab', 'instagram']" size="2x"/></a>
         </div>
         <div class="col text-center">
-            <router-link :to="{ name: 'home' }" class="text-white text-decoration-none">
+            <a href="/" class="text-white text-decoration-none">
                 HOOKAH<span class="fw-bold text-danger">.</span>CENTER
-            </router-link>
+            </a>
         </div>
         <div class="col text-end">
             <a href="#" @click="openSearchModalWindow()"><fa class="svglink" :icon="['fas', 'search']" size="2x"/></a>
@@ -31,3 +31,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.svglink path{
+    color: white;
+}
+</style>

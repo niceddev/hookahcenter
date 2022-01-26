@@ -1,4 +1,4 @@
-let apiUrl = 'api/products/'
+let apiUrl = '/api/products/'
 
 export default  {
     state:{

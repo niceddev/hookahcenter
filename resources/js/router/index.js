@@ -1,22 +1,25 @@
-import VueRouter from "vue-router"
-import Home from './views/Home.vue'
-import Product from './views/Product.vue'
+import VueRouter from 'vue-router'
+import Main from "../views/Main";
+import Product from "../views/Product";
 
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: Home
+        name: 'main',
+        component: Main
     },
     {
         path: '/products',
         name: 'products',
         component: Product
-    },
+    }
 ]
 
 const router = new VueRouter({
     mode: 'history',
+    scrollBehavior(){
+        return { y:0 }
+    },
     routes
 })
 
