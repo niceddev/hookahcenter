@@ -10,7 +10,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('panel.login');
+        return view('components.login');
     }
 
     public function auth()
