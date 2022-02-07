@@ -6,7 +6,7 @@
     border: 0;
     box-sizing: border-box;
 }
-#app, html, body {
+#app {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -167,6 +167,13 @@ label{
 #products .card-price{
     font-weight: 700;
     font-size: 28px;
+}
+
+.form-signin{
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    margin: auto;
 }
 
 @charset "UTF-8";

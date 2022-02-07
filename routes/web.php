@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Panel\LoginController;
-use App\Http\Controllers\Panel\PanelController;
+use App\Http\Controllers\Api\v1\ProductController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/products', [ProductController::class, 'index2'])->name('product');
+//Route::get('/', [ProductController::class, 'index2']);
 
-Route::view('/{any}', 'app')
-    ->where('any', '.*');
+Route::view('/{products?}', 'app');

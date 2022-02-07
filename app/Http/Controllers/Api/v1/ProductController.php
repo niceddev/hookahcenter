@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 
-class ProductController extends Controller
+class  ProductController extends Controller
 {
 
     public function index()
@@ -34,13 +34,15 @@ class ProductController extends Controller
 //        $arr = [5,1,3];
 //        print_r($this->arrSum($arr));
 //        dd(collect(Product::all()));
-        $prod = Product::all()
-            ->sortByDesc('price')
-            ->pluck('price');
-        dd($prod);
+//        $prod = Product::all()
+//            ->sortByDesc('price')
+//            ->pluck('price');
+//        dd($prod);
+
+        $product = Product::all();
 
 
-        return view('product');
+        return view('app')->with('product', $product);
     }
 
 //    public function sortIt(&$arr){

@@ -34,7 +34,7 @@
                             <img class="img-thumbnail" src="images/noimage.jpg">
                         </picture>
                         <div class="card-body">
-                            <h4 class="card-title">{{product.name}}</h4>
+                            <h4 class="card-title">{{product.title}}</h4>
                             <p class="card-text">{{product.description}}</p>
                         </div>
                         <div class="d-flex justify-content-around align-items-center">

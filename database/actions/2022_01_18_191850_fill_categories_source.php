@@ -13,19 +13,19 @@ class FillCategoriesSource extends Actionable
     {
         DB::table('categories')->insert([
             [
-                'name' => 'Кальяны',
+                'title' => 'Кальяны',
             ],
             [
-                'name' => 'Табаки',
+                'title' => 'Табаки',
             ],
             [
-                'name' => 'Электронки',
+                'title' => 'Электронки',
             ],
             [
-                'name' => 'Колбы',
+                'title' => 'Колбы',
             ],
             [
-                'name' => 'Чаши',
+                'title' => 'Чаши',
             ],
         ]);
     }

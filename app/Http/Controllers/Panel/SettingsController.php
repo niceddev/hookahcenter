@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PanelController extends Controller
+class SettingsController extends Controller
 {
-
     public function index()
     {
-        return view('components.dashboard');
+        return view('panel.settings');
     }
-
 }

@@ -26569,7 +26569,7 @@ var render = function () {
                       staticClass: "fs-5 btn btn-outline-light border-2",
                       attrs: { for: category.id },
                     },
-                    [_vm._v(_vm._s(category.name))]
+                    [_vm._v(_vm._s(category.title))]
                   ),
                 ]
               )
@@ -26724,7 +26724,7 @@ var render = function () {
                       _vm._v(" "),
                       _c("div", { staticClass: "card-body" }, [
                         _c("h4", { staticClass: "card-title" }, [
-                          _vm._v(_vm._s(product.name)),
+                          _vm._v(_vm._s(product.title)),
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text" }, [
@@ -26829,7 +26829,7 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("h1", { staticClass: "col-5 m-4 fw-bold fs-1" }, [
-                    _vm._v(_vm._s(_vm.dataSet.name)),
+                    _vm._v(_vm._s(_vm.dataSet.title)),
                   ]),
                 ]),
                 _vm._v(" "),

@@ -8,10 +8,15 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css"/>
     <title>{{ $title ?? 'Админ-панель' }}</title>
 </head>
-<body>
-    <div>
-        {{ $slot }}
+<body class="bg-light">
+    <div class="d-flex">
+        @auth
+            <x-sidebar></x-sidebar>
+        @endauth
+        <div class="container-fluid p-4">
+            {{ $slot }}
+        </div>
     </div>
-    <script src="{{ mix('js/app.js') }}"></script>
+{{--    <script src="{{ mix('dist/js/app.js') }}"></script>--}}
 </body>
 </html>

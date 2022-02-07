@@ -10,7 +10,7 @@
                         <source :srcset="dataSet.image_path" type="image/webp">
                         <img class="card-img-top" :src="dataSet.image_path">
                     </picture>
-                    <h1 class="col-5 m-4 fw-bold fs-1">{{ dataSet.name }}</h1>
+                    <h1 class="col-5 m-4 fw-bold fs-1">{{ dataSet.title }}</h1>
                 </div>
                 <div class="row p-4">
                     <p class="col-12 text-secondary fs-3 mt-2">{{ dataSet.description }}</p>

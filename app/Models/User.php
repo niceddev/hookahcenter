@@ -43,6 +43,6 @@ class User extends Authenticatable
     ];
 
     public function hasRole($role){
-        return $role == 'admin' ? $role == $this->role : 0;
+        return $role == 'admin' && $this->role;
     }
 }

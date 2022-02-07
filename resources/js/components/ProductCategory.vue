@@ -17,7 +17,7 @@
                            name="category"
                            :value="category.id"
                            v-model="selectedCategory">
-                    <label :for="category.id" class="fs-5 btn btn-outline-light border-2">{{ category.name }}</label>
+                    <label :for="category.id" class="fs-5 btn btn-outline-light border-2">{{ category.title }}</label>
                 </li>
             </ul>
         </div>
