@@ -10,10 +10,38 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::paginate(8);
+        $categories = Category::with('products')->paginate(10);
 
-//        if($categories->count)
+        return view('panel.category', compact('categories'));
+    }
 
-        return view('panel.category')->with('categories', $categories);
+    public function create()
+    {
+        //
+    }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+        //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    public function destroy($id)
+    {
+        //
     }
 }

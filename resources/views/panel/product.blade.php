@@ -8,6 +8,12 @@
         <h3 class="float-end">Общее количество: {{ $products->total() }}</h3>
     </x-heading>
 
+    @if(session('successStatus'))
+        <div class="alert alert-success" role="alert">
+            {{ session('successStatus') }}
+        </div>
+    @endif
+
     <table class="table table-hover">
         <thead>
             <tr>
