@@ -1,13 +1,13 @@
 @props([
-    'activee'
+    'active'
 ])
 
 @php
-    $class = $activee ? 'nav-link text-white active' : 'nav-link text-white';
+    $class = $active ? 'active' : null;
 @endphp
 
 <li class="nav-item">
-    <a {{ $attributes->class(['fs-6'])->merge(['class' => $class]) }} >
+    <a {{ $attributes->class(['nav-link text-white'])->merge(['class' => $class]) }} >
         {{ $slot }}
     </a>
 </li>

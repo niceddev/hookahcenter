@@ -2,13 +2,16 @@
 
     <x-slot name="title">Товары</x-slot>
 
-    <x-heading :dataset="$products">
-        <x-button>Добавить товар</x-button>
+    <x-heading>
+        <x-button link :href="route('panel.products.create')">Добавить товар</x-button>
+        <x-button type="danger">Удалить</x-button>
+        <h3 class="float-end">Общее количество: {{ $products->total() }}</h3>
     </x-heading>
 
     <table class="table table-hover">
         <thead>
             <tr>
+                <th scope="col"><input type="checkbox" ></th>
                 <th scope="col">ID</th>
                 <th scope="col">Картинка</th>
                 <th scope="col">Название</th>

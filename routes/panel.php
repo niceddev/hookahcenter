@@ -17,9 +17,13 @@ Route::as('panel.')->prefix('panel')->group(function(){
     });
     Route::middleware(['auth', 'panel:admin', 'prevent-back-history'])->group(function (){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-        Route::get('/products', [ProductController::class, 'index'])->name('products');
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+        Route::get('/categories', [CategoryController::class, 'index']);
+        Route::get('/products', [ProductController::class, 'index']);
+
+        Route::resource('/products',ProductController::class);
+        Route::resource('/categories',CategoryController::class);
+
         Route::view('/{any?}', 'panel.dashboard')->where('any','.*');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });

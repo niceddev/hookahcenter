@@ -13,10 +13,10 @@
         @auth
             <x-sidebar></x-sidebar>
         @endauth
-        <div class="container-fluid p-4">
+        <div class="container-fluid p-4 fs-5">
             {{ $slot }}
         </div>
     </div>
-{{--    <script src="{{ mix('dist/js/app.js') }}"></script>--}}
+    <script src="{{ mix('dist/panel.js') }}"></script>
 </body>
 </html>

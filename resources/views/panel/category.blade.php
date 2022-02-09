@@ -3,7 +3,7 @@
     <x-slot name="title">Категории</x-slot>
 
     <x-heading :dataset="$categories">
-        <x-button>Добавить категорию</x-button>
+        <x-button link :href="route('panel.categories.create')">Добавить категорию</x-button>
     </x-heading>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">

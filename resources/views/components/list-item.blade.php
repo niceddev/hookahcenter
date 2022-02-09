@@ -1,8 +1,6 @@
-    {{--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">--}}
-    {{--    Launch demo modal--}}
-    {{--</button>--}}
 <tr>
-    <th scope="row">{{ $dataset->id }}</th>
+    <th><input type="checkbox"></th>
+    <th>{{ $dataset->id }}</th>
     <td>Картинкааа</td>
     <td>{{ $dataset->title }}</td>
     <td>{{ $dataset->category->title }}</td>
