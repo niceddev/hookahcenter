@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/dist/panel.js": "/dist/panel.js",
+    "/js/panel.js": "/js/panel.js",
+    "/js/dropzone.js": "/js/dropzone.js",
     "/css/app.css": "/css/app.css",
     "/images/about-img.png": "/images/about-img.png",
     "/images/headSectionBg.jpg": "/images/headSectionBg.jpg",

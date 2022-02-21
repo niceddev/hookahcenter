@@ -1,11 +1,3 @@
-@props([
-    'fieldName',
-    'fieldValue',
-    'fieldLabel',
-    'fieldType',
-    'fieldRange'
-])
-
 <div class="row mb-3">
     <label for="{{ $fieldName }}" class="text-secondary col-md-3 col-form-label">{{ $fieldLabel }}</label>
 

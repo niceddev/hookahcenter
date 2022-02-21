@@ -32,26 +32,30 @@ class ProductController extends Controller
     {
         $products = Product::create($request->validated());
 
-        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно добавлен!');
-    }
+        if(!$products){
+            return redirect()->back()->with('errorStatus', 'Неизведанная ошибка!');
+        }
 
-    public function show($id)
-    {
-        //
+        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно добавлен!');
     }
 
     public function edit($id)
     {
-        //
+        $product = Product::with('category')->find($id);
+        $categories = Category::all();
+
+        return view('panel.product-edit', compact(['product', 'categories']));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     public function destroy($id)
     {
-        //
+        Product::find($id)->delete();
+
+        return redirect()->route('panel.products.index');
     }
 }

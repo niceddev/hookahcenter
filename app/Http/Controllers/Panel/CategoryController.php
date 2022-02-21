@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -10,19 +11,28 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('products')->paginate(10);
+        $categories = Category::with('products')
+                            ->withCount('products')
+                            ->withSum('products', 'price')
+                            ->paginate(10);
 
         return view('panel.category', compact('categories'));
     }
 
     public function create()
     {
-        //
+        return view('panel.category-form');
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = Category::create($request->validated());
+
+        if(!$category){
+            return redirect()->back()->with('errorStatus', 'Неизведанная ошибка!');
+        }
+
+        return redirect()->route('panel.categories.index')->with('successStatus', 'Категория успешно добавлена!');
     }
 
     public function show($id)
@@ -32,7 +42,9 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('panel.category-edit', compact(['category']));
     }
 
     public function update(Request $request, $id)

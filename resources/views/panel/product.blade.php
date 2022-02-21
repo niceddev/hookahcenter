@@ -4,7 +4,7 @@
 
     <x-heading>
         <x-button link :href="route('panel.products.create')">Добавить товар</x-button>
-        <x-button type="danger">Удалить</x-button>
+        <x-button type="danger">Удалить товары</x-button>
         <h3 class="float-end">Общее количество: {{ $products->total() }}</h3>
     </x-heading>
 
@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <table class="table table-hover">
+    <table class="table table-hover pe-auto">
         <thead>
             <tr>
                 <th scope="col"><input type="checkbox" ></th>
@@ -27,14 +27,12 @@
             </tr>
         </thead>
         <tbody>
+            <x-modalItem/>
             @foreach($products as $product)
                 <x-list-item :dataset="$product"></x-list-item>
             @endforeach
         </tbody>
-
     </table>
-
-
 
     {{ $products->links('components.pagination') }}
 

@@ -1,9 +1,8 @@
 <x-panel-layout>
-
-    <x-slot name="title">Добавление товара</x-slot>
+    <x-slot name="title">Редактирование товара</x-slot>
 
     <x-heading>
-        <h1>Добавление товара</h1>
+        <h1>Редактирование товара</h1>
     </x-heading>
 
     @if(session('errorStatus'))
@@ -13,44 +12,47 @@
     @endif
 
     <div class="container bg-white p-5">
-        <form action="{{ route('panel.products.store') }}" method="POST">
+        <form action="/" method="POST">
             @csrf
             <div id="img-dropzone" class="dropzone btn bg-info w-100 h-auto">
                 <span class="dz-message text-light text-center align-middle">Загрузить...</span>
             </div>
             <hr/>
-
             <x-input
                 fieldLabel="Наименование"
                 fieldName="title"
                 fieldType="text"
-                fieldRange="5-30"/>
+                fieldRange="5-30"
+                :fieldValue="$product->title"/>
             <x-input
                 fieldLabel="Описание"
                 fieldName="description"
                 fieldType="textarea"
-                fieldRange="10-150"/>
+                fieldRange="10-150"
+                :fieldValue="$product->description"/>
             <x-input
                 fieldLabel="Цена"
                 fieldName="price"
                 fieldType="number"
-                fieldRange="3-7"/>
+                fieldRange="3-7"
+                :fieldValue="$product->price"/>
 
             <x-select
                 fieldLabel="Категория"
                 fieldName="category_id"
                 :dataSet="$categories"
+                :fieldSelected="$product->category_id"
             />
 
             <div>
-                <x-button link :href="route('panel.products.index')">Отмена</x-button>
-                <x-button type="success" >Добавить</x-button>
+                <x-button link :href="redirect()->back()->getTargetURL()">Отмена</x-button>
+                <x-button type="success">Сохранить</x-button>
             </div>
 
         </form>
     </div>
 
     @push('scripts')
-        <script src="{{ mix('js/dropzone.js') }}"></script>
+        <script src="{{ mix('js/dropzone.js') }}">
     @endpush
 </x-panel-layout>

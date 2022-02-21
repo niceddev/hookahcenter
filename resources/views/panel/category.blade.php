@@ -4,7 +4,14 @@
 
     <x-heading :dataset="$categories">
         <x-button link :href="route('panel.categories.create')">Добавить категорию</x-button>
+        <x-button type="danger">Удалить категорий</x-button>
     </x-heading>
+
+    @if(session('successStatus'))
+        <div class="alert alert-success" role="alert">
+            {{ session('successStatus') }}
+        </div>
+    @endif
 
     <table class="table table-hover">
         <thead>
@@ -22,7 +29,6 @@
                 <x-list-item :dataset="$category"></x-list-item>
             @endforeach
         </tbody>
-
     </table>
 
     {{ $categories->links('components.pagination') }}
