@@ -5,3 +5,4 @@ let myDropzone = new Dropzone('#img-dropzone', {
     maxFilesize: 8,
     paramName: 'randomizeIt'
 });
+

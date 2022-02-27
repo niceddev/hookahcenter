@@ -19,7 +19,7 @@
                 fieldLabel="Наименование"
                 fieldName="title"
                 fieldType="text"
-                fieldRange="5-30"/>
+                fieldRange="3-20"/>
 
             <div>
                 <x-button link :href="route('panel.categories.index')">Отмена</x-button>

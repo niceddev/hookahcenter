@@ -1,9 +1,9 @@
 <tr>
     @if(request()->routeIs('panel.products.index'))
-        <th><input type="checkbox"></th>
-        <th>{{ $dataset->id }}</th>
-        <td>Картинкааа</td>
-        <td>{{ $dataset->title }}</td>
+        <th><input type="checkbox" class="form-check-input"></th>
+        <th class="item-id">{{ $dataset->id }}</th>
+        <td class="item-img">Картинкааа</td>
+        <td class="item-title">{{ $dataset->title }}</td>
         <td>{{ $dataset->category->title }}</td>
         <td>{{ $dataset->price }}</td>
         <td>
@@ -13,9 +13,9 @@
                 </svg>
             </x-button>
     @elseif(request()->routeIs('panel.categories.index'))
-        <th><input type="checkbox"></th>
-        <th>{{ $dataset->id }}</th>
-        <td>{{ $dataset->title }}</td>
+        <th><input type="checkbox" class="form-check-input"></th>
+        <th class="item-id">{{ $dataset->id }}</th>
+        <td class="item-title">{{ $dataset->title }}</td>
         <td>{{ $dataset->products_count }}</td>
         <td>{{ $dataset->products_sum_price }}</td>
         <td>

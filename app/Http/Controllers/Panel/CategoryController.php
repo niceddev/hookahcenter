@@ -43,6 +43,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+        if(!$category){
+            return redirect()->route('panel.categories.index')->with('errorStatus', 'Категории не существует, либо был удален!');
+        }
 
         return view('panel.category-edit', compact(['category']));
     }
@@ -54,6 +57,8 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+
+        return redirect()->route('panel.categories.index')->with('successStatus', 'Успешно удалено!');
     }
 }

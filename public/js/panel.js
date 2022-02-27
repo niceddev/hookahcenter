@@ -3179,6 +3179,108 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
+/***/ "./resources/js/panel/modal.js":
+/*!*************************************!*\
+  !*** ./resources/js/panel/modal.js ***!
+  \*************************************/
+/***/ (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var btnDangerEl = document.getElementsByClassName("itemDelete");
+var modalItemTitle = document.querySelector('#deleteModal .modal-item-title');
+var modalForm = document.querySelector('#deleteModal form');
+
+var _iterator = _createForOfIteratorHelper(btnDangerEl),
+    _step;
+
+try {
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    var item = _step.value;
+    item.addEventListener('click', function (e) {
+      var id = e.currentTarget.closest('tr').querySelector('.item-id').innerHTML;
+      var itemTitle = e.currentTarget.closest('tr').querySelector('.item-title').innerHTML;
+      modalItemTitle.innerHTML = 'Удалить ' + itemTitle + '?';
+      modalForm.setAttribute('action', location.pathname + '/' + id);
+    });
+  }
+} catch (err) {
+  _iterator.e(err);
+} finally {
+  _iterator.f();
+}
+
+/***/ }),
+
+/***/ "./resources/js/panel/multipleCheck.js":
+/*!*********************************************!*\
+  !*** ./resources/js/panel/multipleCheck.js ***!
+  \*********************************************/
+/***/ (() => {
+
+var deleteAllButton = document.querySelector('.heading > .btn-danger');
+var selectAllCheckbox = document.querySelector('.check-all');
+var checkboxes = document.querySelectorAll('tbody .form-check-input');
+var modalForm = document.querySelector('#deleteAllModal form');
+var itemsId = document.querySelectorAll('.item-id');
+var allItemsId = [];
+
+if (allItemsId.length === 0) {
+  deleteAllButton.setAttribute('disabled', 'disabled');
+} else {
+  deleteAllButton.removeAttribute('disabled');
+}
+
+selectAllCheckbox === null || selectAllCheckbox === void 0 ? void 0 : selectAllCheckbox.addEventListener('click', function (e) {
+  if (selectAllCheckbox.checked) {
+    itemsId.forEach(function (val) {
+      var id = parseInt(val.innerHTML);
+
+      if (!allItemsId.includes(id)) {
+        allItemsId.push(id);
+      }
+    });
+    checkboxes.forEach(function (checkbox) {
+      checkbox.checked = true;
+    });
+    deleteAllButton.removeAttribute('disabled');
+  } else {
+    allItemsId = [];
+    checkboxes.forEach(function (checkbox) {
+      checkbox.checked = false;
+    });
+    deleteAllButton.setAttribute('disabled', 'disabled');
+  }
+
+  modalForm.setAttribute('action', location.pathname + '/' + allItemsId);
+});
+checkboxes.forEach(function (e) {
+  e === null || e === void 0 ? void 0 : e.addEventListener('click', function () {
+    var id = parseInt(e.closest('tr').querySelector('.item-id').innerHTML);
+    var idIndex = allItemsId.indexOf(id);
+
+    if (!allItemsId.includes(id)) {
+      allItemsId.push(id);
+    } else {
+      allItemsId.splice(idIndex, 1);
+    }
+
+    modalForm.setAttribute('action', location.pathname + '/' + allItemsId);
+
+    if (allItemsId.length === 0) {
+      deleteAllButton.setAttribute('disabled', 'disabled');
+    } else {
+      deleteAllButton.removeAttribute('disabled');
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -8722,49 +8824,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/js/bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./resources/js/panel/modal.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modal__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _multipleCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./multipleCheck */ "./resources/js/panel/multipleCheck.js");
+/* harmony import */ var _multipleCheck__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_multipleCheck__WEBPACK_IMPORTED_MODULE_3__);
 
 
-var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-var btnDangerEl = document.getElementsByClassName("itemDelete");
-var modalYesBtn = document.getElementsByClassName('modal-yes-btn')[0];
 
-var _iterator = _createForOfIteratorHelper(btnDangerEl),
-    _step;
 
-try {
-  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-    var item = _step.value;
-    item.addEventListener('click', function (e) {
-      var id = e.currentTarget.closest('tr').children[1].innerHTML;
-      modalYesBtn.addEventListener('click', function () {
-        deleteRequest('products', id);
-      });
-    });
-  }
-} catch (err) {
-  _iterator.e(err);
-} finally {
-  _iterator.f();
-}
-
-function deleteRequest(apiUrl, id) {
-  fetch(apiUrl + '/' + id, {
-    headers: {
-      'X-CSRF-TOKEN': csrfToken,
-      'Content-type': 'application/json; charset=UTF-8',
-      'Accept': 'application/json'
-    },
-    method: 'DELETE'
-  }).then(function (res) {
-    return console.log(res.url);
-  });
-}
 })();
 
 /******/ })()

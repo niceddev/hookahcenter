@@ -12,8 +12,9 @@
     @endif
 
     <div class="container bg-white p-5">
-        <form action="/" method="POST">
+        <form action="{{ route('panel.products.update', $product->id) }}" method="POST">
             @csrf
+            @method('put')
             <div id="img-dropzone" class="dropzone btn bg-info w-100 h-auto">
                 <span class="dz-message text-light text-center align-middle">Загрузить...</span>
             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,19 +44,36 @@ class ProductController extends Controller
     {
         $product = Product::with('category')->find($id);
         $categories = Category::all();
+        if(!$product){
+            return redirect()->route('panel.products.index')->with('errorStatus', 'Товар не существует, либо был удален!');
+        }
 
         return view('panel.product-edit', compact(['product', 'categories']));
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        dd($request);
+        $product = Product::find($id);
+
+        if ($product){
+            $product->update($request->validated());
+        }else{
+            return back()->with('errorStatus', 'Неизведанная ошибка!');
+        }
+
+        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно обновлен!');
     }
 
-    public function destroy($id)
+    public function destroy($ids)
     {
-        Product::find($id)->delete();
+//        if (is_array($ids)){
+//            dd($id);
+            Product::whereIn('id', explode(",",$ids))->delete();
+//        }else{
+//            dd('asd');
+//            Product::find($id)->delete();
+//        }
 
-        return redirect()->route('panel.products.index');
+        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно удален!');
     }
 }

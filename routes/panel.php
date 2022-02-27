@@ -21,8 +21,8 @@ Route::as('panel.')->prefix('panel')->group(function(){
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::get('/products', [ProductController::class, 'index']);
 
-        Route::resource('/products',ProductController::class);
-        Route::resource('/categories',CategoryController::class);
+        Route::resource('/products',ProductController::class)->except('show');
+        Route::resource('/categories',CategoryController::class)->except('show');
 
         Route::view('/{any?}', 'panel.dashboard')->where('any','.*');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

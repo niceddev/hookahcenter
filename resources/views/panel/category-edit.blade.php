@@ -18,7 +18,7 @@
                 fieldLabel="Наименование"
                 fieldName="title"
                 fieldType="text"
-                fieldRange="5-30"
+                fieldRange="3-20"
                 :fieldValue="$category->title"/>
 
             <div>
