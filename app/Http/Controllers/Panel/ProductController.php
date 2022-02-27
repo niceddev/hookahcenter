@@ -13,7 +13,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->orderBy('id')->paginate(10);
+        $products = Product::with('category')
+                            ->orderBy('id')
+                            ->paginate(10);
 
         if($products->currentPage() > $products->lastPage()){
             return redirect()->back();

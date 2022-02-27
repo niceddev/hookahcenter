@@ -14,6 +14,7 @@ class CategoryController extends Controller
         $categories = Category::with('products')
                             ->withCount('products')
                             ->withSum('products', 'price')
+                            ->orderBy('id')
                             ->paginate(10);
 
         return view('panel.category', compact('categories'));
@@ -35,11 +36,6 @@ class CategoryController extends Controller
         return redirect()->route('panel.categories.index')->with('successStatus', 'Категория успешно добавлена!');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $category = Category::find($id);
@@ -50,9 +46,17 @@ class CategoryController extends Controller
         return view('panel.category-edit', compact(['category']));
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        if ($category){
+            $category->update($request->validated());
+        }else{
+            return back()->with('errorStatus', 'Неизведанная ошибка!');
+        }
+
+        return redirect()->route('panel.categories.index')->with('successStatus', 'Успешно изменено!');
     }
 
     public function destroy($ids)

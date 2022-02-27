@@ -6,7 +6,7 @@ let itemsId = document.querySelectorAll('.item-id');
 let allItemsId = [];
 
 if(allItemsId.length === 0){
-    deleteAllButton.setAttribute('disabled', 'disabled');
+    deleteAllButton?.setAttribute('disabled', 'disabled');
 }else{
     deleteAllButton.removeAttribute('disabled');
 }

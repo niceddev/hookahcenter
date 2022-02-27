@@ -3230,7 +3230,7 @@ var itemsId = document.querySelectorAll('.item-id');
 var allItemsId = [];
 
 if (allItemsId.length === 0) {
-  deleteAllButton.setAttribute('disabled', 'disabled');
+  deleteAllButton === null || deleteAllButton === void 0 ? void 0 : deleteAllButton.setAttribute('disabled', 'disabled');
 } else {
   deleteAllButton.removeAttribute('disabled');
 }

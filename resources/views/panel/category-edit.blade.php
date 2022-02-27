@@ -12,8 +12,9 @@
     @endif
 
     <div class="container bg-white p-5">
-        <form action="/" method="POST">
+        <form action="{{ route('panel.categories.update', $category->id) }}" method="POST">
             @csrf
+            @method('put')
             <x-input
                 fieldLabel="Наименование"
                 fieldName="title"
