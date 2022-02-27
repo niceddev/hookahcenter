@@ -55,9 +55,9 @@ class CategoryController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy($ids)
     {
-        Category::find($id)->delete();
+        Category::whereIn('id', explode(",", $ids))->delete();
 
         return redirect()->route('panel.categories.index')->with('successStatus', 'Успешно удалено!');
     }

@@ -66,13 +66,7 @@ class ProductController extends Controller
 
     public function destroy($ids)
     {
-//        if (is_array($ids)){
-//            dd($id);
-            Product::whereIn('id', explode(",",$ids))->delete();
-//        }else{
-//            dd('asd');
-//            Product::find($id)->delete();
-//        }
+        Product::whereIn('id', explode(",",$ids))->delete();
 
         return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно удален!');
     }
