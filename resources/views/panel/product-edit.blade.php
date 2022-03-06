@@ -15,9 +15,7 @@
         <form action="{{ route('panel.products.update', $product->id) }}" method="POST">
             @csrf
             @method('put')
-            <div id="img-dropzone" class="dropzone btn bg-info w-100 h-auto">
-                <span class="dz-message text-light text-center align-middle">Загрузить...</span>
-            </div>
+
             <hr/>
             <x-input
                 fieldLabel="Наименование"
@@ -53,7 +51,4 @@
         </form>
     </div>
 
-    @push('scripts')
-        <script src="{{ mix('js/dropzone.js') }}">
-    @endpush
 </x-panel-layout>

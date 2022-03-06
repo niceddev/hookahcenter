@@ -13,13 +13,15 @@
     @endif
 
     <div class="container bg-white p-5">
-        <form action="{{ route('panel.products.store') }}" method="POST">
+        <form action="{{ route('panel.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div id="img-dropzone" class="dropzone btn bg-info w-100 h-auto">
-                <span class="dz-message text-light text-center align-middle">Загрузить...</span>
-            </div>
-            <hr/>
 
+            <x-validation-error fieldName="image_path"/>
+            <div class="input-group mb-3">
+                <input type="file" name="image_path" class="form-control">
+            </div>
+
+            <hr/>
             <x-input
                 fieldLabel="Наименование"
                 fieldName="title"
@@ -50,7 +52,4 @@
         </form>
     </div>
 
-    @push('scripts')
-        <script src="{{ mix('js/dropzone.js') }}"></script>
-    @endpush
 </x-panel-layout>

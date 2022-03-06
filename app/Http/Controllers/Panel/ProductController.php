@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -33,8 +31,9 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $products = Product::create($request->validated());
-
+        $products = Product::create($request->validated())
+                        ->addMedia($request->file('image_path'))
+                        ->toMediaCollection();
         if(!$products){
             return redirect()->back()->with('errorStatus', 'Неизведанная ошибка!');
         }
