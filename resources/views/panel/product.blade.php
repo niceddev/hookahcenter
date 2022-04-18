@@ -4,12 +4,17 @@
 
     <x-heading>
         <x-modalAllCheckbox/>
-        <x-button link :href="route('panel.products.create')">Добавить товар</x-button>
-        <x-button type="danger" data-bs-toggle="modal" data-bs-target="#deleteAllModal">Удалить товары</x-button>
-        <h3 class="float-end">Общее количество: {{ $products->total() }}</h3>
+        <div class="d-flex align-items-end pb-3">
+            <x-button link :href="route('panel.products.create')">Добавить товар</x-button>
+            <x-button type="danger" data-bs-toggle="modal" data-bs-target="#deleteAllModal" disabled>Удалить товары</x-button>
+        </div>
+        <div>
+            <h5>Количество продуктов: {{ $products->total() }} шт.</h5>
+            {{ $products->links('components.pagination') }}
+        </div>
     </x-heading>
 
-    @if(session('successStatus'))
+@if(session('successStatus'))
         <div class="alert alert-success" role="alert">
             {{ session('successStatus') }}
         </div>
@@ -19,7 +24,7 @@
         </div>
     @endif
 
-    <table class="table table-hover pe-auto">
+    <table class="table table-hover pe-auto mb-5">
         <thead>
             <tr>
                 <th scope="col"><input type="checkbox" class="form-check-input check-all"></th>

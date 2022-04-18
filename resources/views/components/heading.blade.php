@@ -1,4 +1,4 @@
-<div class="py-5 bg-light heading">
+<div class="py-3 bg-light heading d-flex justify-content-between">
 
     {{ $slot }}
 

@@ -3222,7 +3222,7 @@ try {
   \*********************************************/
 /***/ (() => {
 
-var deleteAllButton = document.querySelector('.heading > .btn-danger');
+var deleteAllButton = document.querySelector('.heading > div > .btn-danger');
 var selectAllCheckbox = document.querySelector('.check-all');
 var checkboxes = document.querySelectorAll('tbody .form-check-input');
 var modalForm = document.querySelector('#deleteAllModal form');

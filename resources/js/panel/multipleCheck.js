@@ -1,4 +1,4 @@
-let deleteAllButton = document.querySelector('.heading > .btn-danger');
+let deleteAllButton = document.querySelector('.heading > div > .btn-danger');
 let selectAllCheckbox = document.querySelector('.check-all');
 let checkboxes = document.querySelectorAll('tbody .form-check-input');
 let modalForm = document.querySelector('#deleteAllModal form');

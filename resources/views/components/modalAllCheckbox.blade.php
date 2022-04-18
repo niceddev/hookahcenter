@@ -8,7 +8,7 @@
                 <div class="alert alert-warning" role="alert">
                     <b>Внимение! </b>Все элементы будут удалены!
                 </div>
-                <form action="/" method="POST">
+                <form action="{{ route('panel.products.destroy', 0) }}" method="POST">
                     @csrf
                     @method('delete')
                     <p class="visually-hidden modal-all-items-id">id</p>

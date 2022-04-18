@@ -4,9 +4,14 @@
 
     <x-heading :dataset="$categories">
         <x-modalAllCheckbox/>
-        <x-button link :href="route('panel.categories.create')">Добавить категорию</x-button>
-        <x-button type="danger" data-bs-toggle="modal" data-bs-target="#deleteAllModal">Удалить категорий</x-button>
-        <h3 class="float-end">Общее количество: {{ $categories->total() }}</h3>
+        <div class="d-flex align-items-end pb-3">
+            <x-button link :href="route('panel.categories.create')">Добавить категорию</x-button>
+            <x-button type="danger" data-bs-toggle="modal" data-bs-target="#deleteAllModal" disabled>Удалить категорий</x-button>
+        </div>
+        <div>
+            <h5 class="float-end">Количество категорий: {{ $categories->total() }} шт.</h5>
+            {{ $categories->links('components.pagination') }}
+        </div>
     </x-heading>
 
     @if(session('successStatus'))

@@ -29,9 +29,11 @@
                     <div class="card p-lg-4 p-md-3 d-flex flex-column"
                          @click="openProductModalWindow(product)">
                         <picture>
-                            <source srcset="images/noimage.jpg" type="image/jpeg">
-                            <source :srcset="product.image_path" type="image/webp">
-                            <img class="img-thumbnail" src="images/noimage.jpg">
+                            <source :srcset="product.image_path" type="image/jpeg">
+<!--                            <source srcset="images/noimage.jpg" type="image/jpeg">-->
+<!--                            <source :srcset="product.image_path" type="image/webp">-->
+                            <img class="img-thumbnail" :src="product.image_path">
+<!--                            <img class="img-thumbnail" src="images/noimage.jpg">-->
                         </picture>
                         <div class="card-body">
                             <h4 class="card-title">{{product.title}}</h4>

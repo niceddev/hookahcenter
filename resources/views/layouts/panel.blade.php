@@ -13,7 +13,7 @@
         @auth
             <x-sidebar></x-sidebar>
         @endauth
-        <div class="container-fluid p-4 fs-5">
+        <div class="container-fluid p-4 mb-5 fs-5">
             {{ $slot }}
         </div>
     </div>

@@ -29,6 +29,11 @@ return [
     */
 
     'disks' => [
+        'media' => [
+            'driver' => 'local',
+            'root' => storage_path('app/media'),
+            'url' => 'http://127.0.0.1:8000/media'
+        ],
 
         'local' => [
             'driver' => 'local',
@@ -40,13 +45,6 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-        ],
-
-        'media' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/media'),
-            'url' => env('APP_URL').'/storage/media',
-            'visibility' => 'public'
         ],
 
         's3' => [
@@ -74,7 +72,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('media') => storage_path('app/media'),
     ],
 
 ];

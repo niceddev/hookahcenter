@@ -2,7 +2,9 @@
     @if(request()->routeIs('panel.products.index'))
         <th><input type="checkbox" class="form-check-input"></th>
         <th class="item-id">{{ $dataset->id }}</th>
-        <td class="item-img">Картинкааа</td>
+        <td class="item-img">
+            <img class="img-thumbnail" src="{{ $dataset->image_path }}" alt="">
+        </td>
         <td class="item-title">{{ $dataset->title }}</td>
         <td>{{ $dataset->category->title }}</td>
         <td>{{ $dataset->price }}</td>

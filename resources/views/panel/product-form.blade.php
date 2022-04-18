@@ -15,10 +15,9 @@
     <div class="container bg-white p-5">
         <form action="{{ route('panel.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
             <x-validation-error fieldName="image_path"/>
             <div class="input-group mb-3">
-                <input type="file" name="image_path" class="form-control">
+                <input type="file" name="product_image" class="form-control">
             </div>
 
             <hr/>
@@ -45,7 +44,7 @@
             />
 
             <div>
-                <x-button link :href="route('panel.products.index')">Отмена</x-button>
+                <x-button link :href="back()->getTargetUrl()">Отмена</x-button>
                 <x-button type="success" >Добавить</x-button>
             </div>
 

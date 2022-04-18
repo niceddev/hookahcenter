@@ -1,5 +1,5 @@
 @if($paginator->hasPages())
-<nav class="my-5">
+<nav class="my-3">
     <ul class="pagination justify-content-end">
         @if(!$paginator->onFirstPage())
             <li class="page-item">

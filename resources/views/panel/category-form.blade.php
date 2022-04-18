@@ -22,7 +22,7 @@
                 fieldRange="3-20"/>
 
             <div>
-                <x-button link :href="route('panel.categories.index')">Отмена</x-button>
+                <x-button link :href="back()->getTargetUrl()">Отмена</x-button>
                 <x-button type="success">Добавить</x-button>
             </div>
 

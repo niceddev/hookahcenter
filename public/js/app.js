@@ -18755,6 +18755,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -26704,21 +26706,14 @@ var render = function () {
                       _c("picture", [
                         _c("source", {
                           attrs: {
-                            srcset: "images/noimage.jpg",
-                            type: "image/jpeg",
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("source", {
-                          attrs: {
                             srcset: product.image_path,
-                            type: "image/webp",
+                            type: "image/jpeg",
                           },
                         }),
                         _vm._v(" "),
                         _c("img", {
                           staticClass: "img-thumbnail",
-                          attrs: { src: "images/noimage.jpg" },
+                          attrs: { src: product.image_path },
                         }),
                       ]),
                       _vm._v(" "),

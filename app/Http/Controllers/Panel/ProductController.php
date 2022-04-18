@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
+use Ramsey\Collection\Collection;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
         $products = Product::with('category')
-                            ->orderBy('id')
-                            ->paginate(10);
+                ->orderBy('id')
+                ->paginate(10);
 
         if($products->currentPage() > $products->lastPage()){
             return redirect()->back();
@@ -31,14 +34,18 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $products = Product::create($request->validated())
-                        ->addMedia($request->file('image_path'))
-                        ->toMediaCollection();
-        if(!$products){
-            return redirect()->back()->with('errorStatus', 'Неизведанная ошибка!');
+        $products = Product::create($request->validated());
+        if ($request->hasFile('product_image')){
+            $products->addMediaFromRequest('product_image')->toMediaCollection('products_image');
         }
 
-        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно добавлен!');
+        if(!$products){
+            return redirect()->back()
+                            ->with('errorStatus', 'Неизведанная ошибка!');
+        }
+
+        return redirect()->route('panel.products.index', 'page='.$this->getLastPage())
+                        ->with('successStatus', 'Товар успешно добавлен!');
     }
 
     public function edit($id)
@@ -46,7 +53,8 @@ class ProductController extends Controller
         $product = Product::with('category')->find($id);
         $categories = Category::all();
         if(!$product){
-            return redirect()->route('panel.products.index')->with('errorStatus', 'Товар не существует, либо был удален!');
+            return redirect()->route('panel.products.index')
+                            ->with('errorStatus', 'Товар не существует, либо был удален!');
         }
 
         return view('panel.product-edit', compact(['product', 'categories']));
@@ -59,16 +67,30 @@ class ProductController extends Controller
         if ($product){
             $product->update($request->validated());
         }else{
-            return back()->with('errorStatus', 'Неизведанная ошибка!');
+            return redirect()->back()
+                            ->with('errorStatus', 'Неизведанная ошибка!');
         }
 
-        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно обновлен!');
+        return redirect()->route('panel.products.index')
+                        ->with('successStatus', 'Товар успешно обновлен!');
     }
 
     public function destroy($ids)
     {
-        Product::whereIn('id', explode(",",$ids))->delete();
+        $ids_arr = array_map('intval', explode(',', $ids));
+        //        $product = Product::whereIn('id', $ids_arr);
+        $products = Product::whereIn('id', $ids_arr);
+        dd($products);
+//        foreach ($products as $key => $product){
+//            $product->getMedia('products_image')->last()->delete();
+//            $product->delete();
+//        }
 
-        return redirect()->route('panel.products.index')->with('successStatus', 'Товар успешно удален!');
+        return redirect()->route('panel.products.index')
+                        ->with('successStatus', 'Товар успешно удален!');
+    }
+
+    public function getLastPage(){
+        return ceil(Product::count()/10);
     }
 }
